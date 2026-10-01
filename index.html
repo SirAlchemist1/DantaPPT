@@ -23,8 +23,8 @@
 html,body{height:100%}
 body{margin:0;background:var(--ink);color:var(--text);font-family:var(--f-body);overflow:hidden}
 [lang="ne"]{font-family:var(--f-dev)}
-#app{position:fixed;inset:0;display:grid;place-items:center;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
-#stage{width:1280px;height:720px;position:relative;transform-origin:center center;flex:none}
+#app{position:fixed;inset:0;overflow:hidden;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+#stage{width:1280px;height:720px;position:absolute;left:50%;top:50%;transform-origin:center center}
 .slide{position:absolute;inset:0;padding:40px 56px 64px;box-sizing:border-box;display:none;flex-direction:column;overflow:hidden;border-radius:14px;
   background:var(--obs) radial-gradient(120% 90% at 100% 0%, #10362a 0%, transparent 55%);color:var(--text);box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .slide.light{background:var(--paper);color:var(--ptext)}
@@ -580,8 +580,11 @@ const NOTES=JSON.parse(document.getElementById('notes-data').textContent);
 const GLOSS=JSON.parse(document.getElementById('gloss-data').textContent);
 let cur=0, step=0;
 const stage=document.getElementById('stage');
-function fit(){const s=Math.min(innerWidth/1280,(innerHeight-8)/720);stage.style.transform='scale('+s+')';}
-addEventListener('resize',fit);fit();
+function fit(){const w=visualViewport?visualViewport.width:innerWidth,h=visualViewport?visualViewport.height:innerHeight,s=Math.min(w/1280,h/720);stage.style.transform='translate(-50%,-50%) scale('+s+')';}
+addEventListener('resize',fit);if(visualViewport)visualViewport.addEventListener('resize',fit);fit();
+function openFs(){if(document.fullscreenElement||document.webkitFullscreenElement)return;const d=document.documentElement,req=d.requestFullscreen||d.webkitRequestFullscreen;if(!req)return;try{const p=req.call(d);if(p&&p.catch)p.catch(()=>{});}catch(e){}}
+openFs();
+addEventListener('pointerdown',function(){if(!document.fullscreenElement&&!document.webkitFullscreenElement)openFs();},{capture:true});
 function maxStep(i){let m=0;slides[i].querySelectorAll('[data-f]').forEach(e=>m=Math.max(m,+e.dataset.f));return m;}
 function paint(){slides[cur].querySelectorAll('[data-f]').forEach(e=>e.classList.toggle('on',+e.dataset.f<=step));
   document.querySelector('#bar .count').textContent=(cur+1)+' / '+slides.length+(maxStep(cur)?' · '+step+'/'+maxStep(cur):'');
