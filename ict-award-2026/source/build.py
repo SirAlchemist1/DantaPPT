@@ -19,32 +19,12 @@ def b64(p):
     return base64.b64encode(p.read_bytes()).decode()
 
 
-FONTS = [
-    ("Bric", "bricolage-latin.woff2", "200 800", "normal", "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"),
-    ("Bric", "bricolage-latinext.woff2", "200 800", "normal", "U+0100-02AF,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF"),
-    ("ISerif", "instrument-serif-italic.woff2", "400", "italic", None),
-    ("Anek", "anek-devanagari.woff2", "100 800", "normal", None),
-    ("GMono", "mono-400.woff2", "400", "normal", None),
-    ("GMono", "mono-600.woff2", "600", "normal", None),
-]
-
-
 def build_html():
-    css = []
-    for fam, f, w, st, rng in FONTS:
-        r = f";unicode-range:{rng}" if rng else ""
-        css.append(f'@font-face{{font-family:"{fam}";src:url(data:font/woff2;base64,{b64(A / f)}) format("woff2");'
-                   f"font-weight:{w};font-style:{st};font-display:block{r}}}")
     html = (SRC / "deck.html").read_text()
-    html = html.replace("/*FONTS*/", "\n".join(css))
-    logo = (A / "danta-logo.svg").read_text()
-    vb = re.search(r'viewBox="([^"]+)"', logo).group(1)
-    inner = re.search(r"<svg[^>]*>(.*)</svg>", logo, re.S).group(1)
-    html = html.replace("<!--LOGO_SYMBOL-->",
-                        f'<svg width="0" height="0" style="position:absolute"><symbol id="danta-logo" viewBox="{vb}">{inner}</symbol></svg>')
-    html = html.replace("<!--QR-->", (A / "qr-danta.svg").read_text())
-    html = html.replace("url(ICT_L)", f"url(data:image/png;base64,{b64(A / 'ict-light.png')})")
-    html = html.replace("url(ICT_D)", f"url(data:image/png;base64,{b64(A / 'ict-dark.png')})")
+    html = re.sub(r'url\("assets/([\w.-]+\.woff2)"\)',
+                  lambda m: f'url(data:font/woff2;base64,{b64(A / m.group(1))})', html)
+    html = re.sub(r"url\(assets/([\w.-]+\.png)\)",
+                  lambda m: f"url(data:image/png;base64,{b64(A / m.group(1))})", html)
     wf = SRC / "danta-workflow.png"
     if wf.exists():
         html = html.replace('src="danta-workflow.png"', f'src="data:image/png;base64,{b64(wf)}"')
