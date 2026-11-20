@@ -245,21 +245,6 @@ h1,h2{font-family:var(--sans);font-weight:800;letter-spacing:-.035em;line-height
 #s4c .why span{display:block;font:500 32px/1.2 var(--sans);color:var(--dkmut);margin-top:4px}
 
 /* ---------- achievements ---------- */
-#sach h2{left:96px;top:172px;font-size:112px}
-#sach h2 .it{color:var(--amb);font-size:124px}
-#sach .sub{left:100px;top:308px;font:500 38px var(--sans);color:var(--dkmut)}
-#sach .grid{left:96px;top:396px;width:1728px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-#sach .a{position:relative;height:302px;border-radius:36px;padding:32px 36px;background:var(--dk2);border:2px solid var(--dkline);overflow:hidden}
-#sach .a .ic{width:80px;height:80px;border-radius:24px;background:rgba(0,168,89,.16);display:flex;align-items:center;justify-content:center}
-#sach .a b{display:block;font:800 46px/1.08 var(--sans);letter-spacing:-.02em;color:#fff;margin-top:22px}
-#sach .a span{display:block;font:500 32px/1.25 var(--sans);color:var(--dkmut);margin-top:8px}
-#sach .a.gold{background:linear-gradient(140deg,#F8C55A,#E9A425);border-color:#F6B53C}
-#sach .a.gold b{color:var(--ink)}#sach .a.gold span{color:#4A3307}
-#sach .a.gold .ic{background:rgba(255,255,255,.4)}
-#sach .a.grn{background:var(--g);border-color:var(--g)}
-#sach .a.grn b{color:#fff}#sach .a.grn span{color:#E3FBEE}
-#sach .a.grn .ic{background:rgba(255,255,255,.2)}
-#sach .a .rib{position:absolute;right:-60px;top:34px;transform:rotate(35deg);background:var(--ink);color:var(--amb);font:800 32px var(--sans);letter-spacing:.08em;padding:6px 70px}
 
 /* notes overlay */
 #notes{position:fixed;left:0;right:0;bottom:0;max-height:42vh;overflow:auto;background:rgba(8,20,15,.94);color:#E8F2EC;padding:18px 28px 22px;font:500 20px/1.5 var(--sans);z-index:20;transform:translateY(105%);transition:transform .35s var(--ease);border-top:3px solid var(--g)}
@@ -274,7 +259,10 @@ body.print #notes{display:none}
 /* ---------- S5 health camp ---------- */
 #s5 .panel{left:0;top:0;width:820px;height:1080px;background:var(--dk)}
 #s5 .brand .wm{color:#fff}
-#s5 .sec{left:900px}
+#s5 .brand .wm span{color:var(--g)}
+#s5 .brand .bm{background:var(--cream)}
+#s5 .brand .bm svg{width:56px;height:56px}
+#s5 .sec{color:var(--dkmut);border-left-color:var(--dkline)}
 #s5 .land{left:70px;top:220px;width:680px;height:460px}
 #s5 .phone{left:500px;top:420px;width:200px;height:350px;background:#0B0F0D;border-radius:34px;border:6px solid #2A3A34;padding:24px 18px}
 #s5 .sig{display:flex;gap:8px;align-items:flex-end;height:46px}
@@ -430,19 +418,19 @@ body.print #notes{display:none}
 #s9 h2{left:96px;top:190px;font-size:112px}
 #s9 h2 .it{color:var(--g);font-size:124px}
 #steam h2{left:96px;top:172px;font-size:112px}
-#steam h2 .it{color:var(--g);font-size:124px}
-#steam .sub{left:100px;top:308px;font:500 38px var(--sans);color:var(--gd)}
-#steam .sub b{color:var(--ink);font-weight:700}
+#steam h2 .it{color:var(--amb);font-size:124px}
+#steam .sub{left:100px;top:308px;font:500 38px var(--sans);color:var(--dkmut)}
+#steam .sub b{color:#fff;font-weight:700}
 #steam .uni{left:96px;top:396px;width:1100px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-#steam .u{display:flex;align-items:center;gap:24px;height:196px;padding:0 30px;border-radius:32px;background:#fff;border:2px solid #E6DFD0}
-#steam .mo{flex:none;width:104px;height:104px;border-radius:26px;background:var(--dk);color:var(--amb);display:flex;align-items:center;justify-content:center;font:800 34px var(--sans);letter-spacing:-.01em}
-#steam .u b{display:block;font:800 38px/1.1 var(--sans);letter-spacing:-.015em;color:var(--ink)}
-#steam .u span{display:block;font:500 32px var(--sans);color:#5B6B62;margin-top:6px}
-#steam .yrs{left:1220px;top:396px;width:604px;height:412px;border-radius:36px;background:var(--dk);color:#fff;padding:30px 44px;display:flex;flex-direction:column;justify-content:center}
-#steam .yrs .n{font:800 220px/.9 var(--sans);letter-spacing:-.05em;color:var(--amb)}
+#steam .u{display:flex;align-items:center;gap:24px;height:196px;padding:0 30px;border-radius:32px;background:var(--dk2);border:2px solid var(--dkline)}
+#steam .mo{flex:none;width:104px;height:104px;border-radius:26px;background:var(--cream);color:var(--dk);display:flex;align-items:center;justify-content:center;font:800 34px var(--sans);letter-spacing:-.01em}
+#steam .u b{display:block;font:800 38px/1.1 var(--sans);letter-spacing:-.015em;color:#fff}
+#steam .u span{display:block;font:500 32px var(--sans);color:var(--dkmut);margin-top:6px}
+#steam .yrs{left:1220px;top:396px;width:604px;height:412px;border-radius:36px;background:var(--amb);color:var(--ink);padding:30px 44px;display:flex;flex-direction:column;justify-content:center}
+#steam .yrs .n{font:800 220px/.9 var(--sans);letter-spacing:-.05em;color:var(--ink)}
 #steam .yrs b{font:800 48px/1.1 var(--sans);letter-spacing:-.02em;margin-top:10px}
 #steam .yrs .tg{display:flex;gap:14px;margin-top:22px}
-#steam .yrs .tg span{font:700 32px var(--sans);padding:8px 22px;border-radius:999px;background:rgba(0,168,89,.2);color:#9FE6C0}
+#steam .yrs .tg span{font:700 32px var(--sans);padding:8px 22px;border-radius:999px;background:var(--ink);color:var(--amb)}
 #steam .mis{left:96px;top:832px;width:1728px;height:176px;padding:0 40px;border-radius:32px;background:var(--g);color:#fff;display:grid;grid-template-columns:380px 1fr 1fr;gap:36px;align-items:center}
 #steam .mis .an em{display:block;font:800 32px var(--sans);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--dk)}
 #steam .mis .an b{display:block;font:800 52px/1.05 var(--sans);letter-spacing:-.02em}
@@ -511,7 +499,7 @@ body.print .caret::after{display:none}
 <section class="slide" id="s0" data-sec="PRODUCT ICT AWARD 2026">
   <div class="abs pill made" data-t="200" data-fx="fade"><svg viewBox="0 0 30 38"><path d="M2 2 L27 18 H11 L27 36 H2 Z" fill="#D7263D" stroke="#1F3C88" stroke-width="2.6" stroke-linejoin="round"/><circle cx="9" cy="13" r="2.6" fill="#fff"/><circle cx="9" cy="28" r="3.2" fill="#fff"/></svg>Made in Nepal, for Nepal</div>
   <h1 class="abs"><span id="t0a" data-full="Doctor saab, bolnus."></span><br><span class="it" id="t0b" data-full="Danta lekhchha."></span></h1>
-  <div class="abs sub" data-t="2700"><b>Nepal's first AI medical scribe,</b> revolutionizing how Nepal and emerging nations digitize healthcare.</div>
+  <div class="abs sub" data-t="2700"><b>The doctor just talks.</b> The record writes itself. Nepal's first AI medical scribe.</div>
   <div class="abs who" data-t="3200" data-fx="fade">
     <div><b>Suryodaya Bikram Shahi</b> · Founder &amp; Executive Chairman</div>
     <div><b>Sushant Raj Dangal</b> · Co-Founder &amp; CEO · Ancoda Labs Pvt. Ltd.</div>
@@ -524,7 +512,7 @@ body.print .caret::after{display:none}
     <div class="fc fc3"><div class="k">Medicine</div><div class="v">Paracetamol 500mg</div></div>
     <div class="fc fc4"><svg width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#00A859"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Record saved</div>
   </div>
-  <aside class="notes">[12s · by 0:12] Namaskar. Doctor saab, bolnus. Danta lekhchha. We're Ancoda Labs. Danta-Med is Nepal's first AI medical scribe, revolutionizing how Nepal and emerging nations digitize healthcare.</aside>
+  <aside class="notes">[12s · by 0:12] Namaskar. What if the doctor just talked, and the record wrote itself? That's Danta-Med, Nepal's first AI medical scribe, from Ancoda Labs.</aside>
 </section>
 
 <!-- ============ 1 PROBLEM ============ -->
@@ -544,7 +532,7 @@ body.print .caret::after{display:none}
 <!-- ============ 3 WORKFLOW ============ -->
 <section class="slide dark" id="s3" data-sec="THE SOLUTION">
   <h2 class="abs" data-t="100">Bolai dekhi <span class="it">record samma.</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade">From the doctor's voice to the hospital record, in five simple steps.</div>
+  <div class="abs sub" data-t="400" data-fx="fade">Five steps. The doctor only does the first one.</div>
   <img class="wfimg" id="wfimg" src="danta-workflow.png" alt="Danta workflow">
   <div class="abs wbtn ui" id="fBtn" data-t="900" data-fx="fade"><i><svg width="20" height="22" viewBox="0 0 10 11"><path d="M1.5 .8v9.4L9.3 5.5z" fill="#F6B53C"/></svg></i>Watch the flow · 35s</div>
   <div class="fv ui" id="fv"><video id="fVid" src="media/flow.mp4" poster="media/flow.jpg" muted playsinline preload="auto"></video><div class="x" id="fX">✕</div></div>
@@ -563,13 +551,13 @@ body.print .caret::after{display:none}
         <h3>Surakshit</h3><div class="en">Saved safely</div><p>In the hospital system. The history follows the patient.</p></div>
     </div>
   </div>
-  <aside class="notes">[15s · by 0:42] Danta fixes it in five steps. Bolnus: the doctor speaks. Sunchha: Danta listens. Bujhchha: it understands. Lekhchha: it writes the note. Surakshit: saved to the hospital system.</aside>
+  <aside class="notes">[14s · by 0:41] Five steps, and the doctor only does the first one. Bolnus: the doctor speaks. Danta listens, understands, writes the note, and saves it to the hospital system.</aside>
 </section>
 
 <!-- ============ 4 NEPAL'S OWN AI ============ -->
 <section class="slide" id="s4" data-sec="NOVELTY · NEPAL'S OWN AI">
   <h2 class="abs" data-t="100">नेपालकै आफ्नै <span class="ai">AI</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade"><b>Same Nepali sentence, four AIs.</b> Global AI breaks it into bits. Ours reads it whole.</div>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>One Nepali sentence. Four AIs.</b> Count the pieces.</div>
   <div class="abs ex" data-t="500" data-fx="fade">
     <div class="exh"><div class="s">नमस्ते, तपाईंलाई कस्तो छ?<small>Hello, how are you?</small></div><div class="h">PIECES</div></div>
     <div id="tokRows"></div>
@@ -585,13 +573,13 @@ body.print .caret::after{display:none}
       <div class="vr"><b>TTS</b><span>अक्षर → बोली</span></div>
       <p>Trained on Devanagari.</p></div>
   </div>
-  <aside class="notes">[22s · by 1:04] Our edge: Nepal's own AI. One Nepali sentence. Alibaba's Qwen breaks it into 24 pieces, Meta 17, Google 8. Danta reads it in 6 whole words. It understands Newari and Bhojpuri too, and our own speech-to-text and text-to-speech are trained on Devanagari.</aside>
+  <aside class="notes">[22s · by 1:03] Here's the part nobody sees. One Nepali sentence, four AIs. Count the pieces: Alibaba's Qwen, 24. Meta, 17. Google, 8. Danta, 6, whole words. It understands Newari and Bhojpuri too, and our own speech-to-text and text-to-speech are trained on Devanagari.</aside>
 </section>
 
 <!-- ============ 4c CHEAPER ============ -->
 <section class="slide dark" id="s4c" data-sec="NOVELTY · WHY IT'S CHEAPER">
   <h2 class="abs" data-t="100">Kam tukra, <span class="it">kam kharcha.</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade"><b>AI bills by the piece, like a taxi meter.</b> Fewer pieces for the same Nepali means a smaller bill.</div>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>Every AI runs a meter.</b> It charges by the piece. So, who reads Nepali in fewer pieces?</div>
   <div class="abs ch" data-t="500" data-fx="fade">
     <div class="t">Pieces to write 100 Nepali words <span>· lower is better</span></div>
     <div class="bars" id="costBars"></div>
@@ -608,11 +596,11 @@ body.print .caret::after{display:none}
       <div><i>3</i><p><b>Runs on-premise</b><span>No cloud bill. Data stays put.</span></p></div>
     </div>
   </div>
-  <aside class="notes">[17s · by 1:21] Why it matters: AI bills by the piece, like a taxi meter. For 100 Nepali words, Qwen needs 652 pieces. Danta needs 133. Same note, about five times cheaper. And our voice AI runs on-premise: no foreign bill, data stays in Nepal.</aside>
+  <aside class="notes">[17s · by 1:20] Why does that matter? Every AI runs a meter and charges by the piece. For 100 Nepali words, Qwen needs 652 pieces, Danta 133. The same note costs about a fifth. And our voice AI runs on-premise, so the data stays in Nepal.</aside>
 </section>
 
 <!-- ============ 5 HEALTH CAMP ============ -->
-<section class="slide" id="s5" data-sec="IMPACT · RURAL NEPAL">
+<section class="slide" id="s5" data-sec="IMPACT">
   <div class="abs panel"></div>
   <svg class="abs land" viewBox="0 0 680 460" data-t="100" data-fx="fade">
     <circle cx="540" cy="90" r="54" fill="#F6B53C"/>
@@ -639,7 +627,7 @@ body.print .caret::after{display:none}
     <div class="row" data-t="2000" data-fx="left"><span class="b">3</span><span>The camp packs up. <b>The patient's history stays.</b></span></div>
   </div>
   <div class="abs first" data-t="3200" data-fx="fade">From city hospitals <span class="g">to the remotest village camp.</span></div>
-  <aside class="notes">[12s · by 1:33] For the first time in Nepal, this reaches rural health camps. Hundreds of patients, weak network, no time to write. Every consult still becomes a digital record.</aside>
+  <aside class="notes">[12s · by 1:32] For the first time in Nepal, this reaches rural health camps. Hundreds of patients, weak network, no time to write. Every consult still becomes a digital record.</aside>
 </section>
 
 <!-- ============ 6 FEATURES ============ -->
@@ -654,13 +642,13 @@ body.print .caret::after{display:none}
     <div class="ft" data-t="1300"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M12 9v6M9 12h6"/></svg></div><h3>Hospital-ready</h3><p>Plugs into your system. Runs on-premise.</p></div>
     <div class="ft am" data-t="1450"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0E1A14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></svg></div><h3>Seconds, not minutes</h3><p>No typing. Check it, tap it, done.</p></div>
   </div>
-  <aside class="notes">[10s · by 1:43] It fits the doctor. Nepali, English or mixed. Fills the notes. Works on low network. Plugs into the existing hospital system.</aside>
+  <aside class="notes">[10s · by 1:42] It fits the doctor. Nepali, English or mixed. Fills the notes. Works on low network. Plugs into the existing hospital system.</aside>
 </section>
 
 <!-- ============ 7 IMPACT ============ -->
 <section class="slide" id="s7" data-sec="USERBASE · LIVE IN HOSPITALS">
   <h2 class="abs" data-t="100">Aspatal ma live. <span class="it">Aaja nai.</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade">Not a plan. In daily use in 2 hospitals since March 2026.</div>
+  <div class="abs sub" data-t="400" data-fx="fade">In daily use, every day, in 2 hospitals.</div>
   <div class="abs big" data-t="600" data-fx="zoom">
     <div class="n"><span id="nBig">0</span>+</div>
     <div class="l">consults digitized every month</div>
@@ -678,7 +666,7 @@ body.print .caret::after{display:none}
       <div class="x"><b>60%+ less paperwork</b> per doctor.</div>
     </div>
   </div>
-  <aside class="notes">[15s · by 1:58] And it's live today. Two hospitals, 35 doctors, over 35,000 consults a month, each one a digital record. The bonus: every doctor gets one and a half to two hours back, every day.</aside>
+  <aside class="notes">[15s · by 1:57] It's already live, in 2 hospitals. 35 doctors, over 35,000 consults a month, each one a digital record. And a bonus: every doctor gets one and a half to two hours back, every day.</aside>
 </section>
 
 <!-- ============ 8 DEMO ============ -->
@@ -695,7 +683,7 @@ body.print .caret::after{display:none}
     <div class="btn ui" id="dPlay"><svg class="pp" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="#fff"/><rect x="14" y="4" width="5" height="16" rx="1.5" fill="#fff"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M6 3.5v17L20 12z" fill="#fff"/></svg><span id="dPlayL">Pause</span></div>
     <div class="btn ui" id="dReplay"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>Replay</div>
   </div>
-  <div class="rec" id="dRec"><i></i>REAL APP · NOT A MOCKUP</div>
+  <div class="rec" id="dRec"><i></i>REAL APP · REAL CONSULT</div>
   <div class="phone ui" data-t="300" data-fx="zoom"><div class="scr">
     <div class="isl"></div>
     <div class="sb"><span>9:41</span><svg viewBox="0 0 70 16"><g fill="#111"><rect x="0" y="10" width="3.5" height="6" rx="1"/><rect x="5.5" y="7" width="3.5" height="9" rx="1"/><rect x="11" y="4" width="3.5" height="12" rx="1"/><rect x="16.5" y="1" width="3.5" height="15" rx="1"/><path d="M30 6.5a10 10 0 0 1 13 0l-1.6 1.7a7.6 7.6 0 0 0-9.8 0zM33 9.6a5.6 5.6 0 0 1 7 0L36.5 13z"/><rect x="48" y="2" width="19" height="11" rx="3" fill="none" stroke="#111" stroke-width="1.4"/><rect x="50" y="4" width="15" height="7" rx="1.6"/><rect x="68" y="5.5" width="1.6" height="4" rx=".8"/></g></svg></div>
@@ -709,7 +697,7 @@ body.print .caret::after{display:none}
     <div class="cg" id="dC2"><div class="cl"><b>Rx, pre-filled</b><span>Vitals, complaint, diagnosis, medicines.</span></div><div class="cl"><b>Doctor stays in charge</b><span>Review, edit, then Generate PDF.</span></div></div>
   </div>
   <div class="abs paper ui" id="dPaper"><img src="media/prescription.jpg" alt="Generated prescription"><div class="stamp"><svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#00A859" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Made by Danta</div></div>
-  <aside class="notes">[40s · by 2:38] Bhanera hoina, dekhaera. A real consult. Tap record. Danta writes every Nepali word. The prescription fills itself. Signed PDF, ready to print. (Let it auto-play.)</aside>
+  <aside class="notes">[40s · by 2:37] Bhanera hoina, dekhaera. A real consult. Tap record. Danta writes every Nepali word. The prescription fills itself. Signed PDF, ready to print. (Let it auto-play.)</aside>
 </section>
 
 <!-- ============ 8b PROOF ============ -->
@@ -736,28 +724,13 @@ body.print .caret::after{display:none}
     <div class="hb" data-k="3" style="top:41.4%;height:23.8%"></div>
   </div>
   <svg class="links" id="pLinks" viewBox="0 0 1920 1080"></svg>
-  <aside class="notes">[12s · by 2:50] Left: what the doctor said, in Nepali. Right: what Danta wrote. Complaint, history, diagnosis, four medicines with dosage. Nobody typed a word.</aside>
-</section>
-
-<!-- ============ ACHIEVEMENTS ============ -->
-<section class="slide dark" id="sach" data-sec="ACHIEVEMENTS">
-  <h2 class="abs" data-t="100">Ahile samma ko <span class="it">upalabdhi.</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade">Not a plan on paper. This has already happened.</div>
-  <div class="abs grid">
-    <div class="a gold" data-t="600" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0E1A14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></div><b>Semi-finalist</b><span>Product ICT Award 2026</span></div>
-    <div class="a" data-t="800" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#00A859" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><b>Nepal's nominee</b><span>World Summit Awards 2026</span><div class="rib">NEPAL</div></div>
-    <div class="a grn" data-t="1000" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M12 9v6M9 12h6"/></svg></div><b>Live in 2 hospitals</b><span>In daily use since March 2026</span></div>
-    <div class="a" data-t="1200" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#00A859" stroke-width="2.2" stroke-linecap="round"><path d="M5 19v-5M10 19V9M15 19v-7M20 19V5"/></svg></div><b>35,000+ consults</b><span>every month, by 35 doctors</span></div>
-    <div class="a" data-t="1400" data-fx="zoom"><div class="ic" style="font:800 34px var(--deva);color:#00A859">अ</div><b>Beat the giants</b><span>Fewer pieces for Nepali than Google, Meta, Alibaba &amp; OpenAI</span></div>
-    <div class="a" data-t="1600" data-fx="zoom"><div class="ic"><svg width="40" height="54" viewBox="0 0 22 30"><rect x="6" y="1" width="10" height="17" rx="5" fill="#00A859"/><path d="M2 14a9 9 0 0 0 18 0M11 23v6" stroke="#00A859" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></div><b>Own STT + TTS</b><span>Nepal's own voice AI, on Devanagari</span></div>
-  </div>
-  <aside class="notes">[8s · by 2:58] We're semi-finalists here, and Nepal's nominee for the World Summit Awards.</aside>
+  <aside class="notes">[12s · by 2:49] Left: what the doctor said, in Nepali. Right: what Danta wrote. Complaint, history, diagnosis, four medicines with dosage. Nobody typed a word.</aside>
 </section>
 
 <!-- ============ TEAM ============ -->
-<section class="slide" id="steam" data-sec="THE TEAM">
-  <h2 class="abs" data-t="100">Sahi team. <span class="it">Sahi samay.</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade"><b>Our mission:</b> revolutionize how healthcare in Nepal and emerging nations goes digital.</div>
+<section class="slide dark" id="steam" data-sec="THE TEAM">
+  <h2 class="abs" data-t="100">Yo kasle <span class="it">banayo?</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>The mission:</b> help Nepal, and nations like it, take healthcare digital.</div>
   <div class="abs uni">
     <div class="u" data-t="600" data-fx="zoom"><div class="mo">H</div><div><b>Harvard University</b><span>USA</span></div></div>
     <div class="u" data-t="750" data-fx="zoom"><div class="mo">UMD</div><div><b>University of Maryland</b><span>College Park, USA</span></div></div>
@@ -774,7 +747,7 @@ body.print .caret::after{display:none}
     <div class="pt"><i>1</i>AI research &amp; deployment lab, from Nepal</div>
     <div class="pt"><i>2</i>Building AI that Nepal owns, holds and governs</div>
   </div>
-  <aside class="notes">[15s · by 3:13] Built by Ancoda Labs, an AI research lab from Nepal. Our team has research experience at Harvard, Maryland, Macquarie and Delhi College of Engineering, and 9-plus years shipping healthcare and finance products.</aside>
+  <aside class="notes">[18s · by 3:07] Who built this? Ancoda Labs, an AI research lab from Nepal. Research experience at Harvard, Maryland, Macquarie and Delhi College of Engineering, and 9-plus years shipping healthcare and finance products. The mission: help Nepal, and nations like it, take healthcare digital.</aside>
 </section>
 
 <!-- ============ 9 FUTURE ============ -->
@@ -787,7 +760,7 @@ body.print .caret::after{display:none}
   <div class="col" id="f2" style="left:520px;height:348px"><div class="bar" style="background:#CDEEDC"></div><div class="lbl" style="top:30px"><em>Bholi · Next</em><b>Hospitals</b><span>across all 7 provinces</span></div></div>
   <div class="col" id="f3" style="left:944px;height:428px"><div class="bar" style="background:#9FDDBD"></div><div class="lbl" style="top:30px"><em>Parsi · Then</em><b>Villages</b><span>every rural clinic and health camp</span></div></div>
   <div class="col last" id="f4" style="left:1368px;height:508px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Ani… · Beyond</em><b>Emerging nations</b><span>South Asia first, then beyond</span></div></div>
-  <aside class="notes">[12s · by 3:25] Aaja 2 aspatal, bholi Nepal bhari. Next, all 7 provinces, then every rural clinic. Then South Asia and the emerging nations.</aside>
+  <aside class="notes">[12s · by 3:19] Aaja 2 aspatal, bholi Nepal bhari. Next, all 7 provinces, then every rural clinic. Then South Asia and the emerging nations.</aside>
 </section>
 
 <!-- ============ 10 CLOSE ============ -->
@@ -797,12 +770,12 @@ body.print .caret::after{display:none}
   <a class="abs qr ui" href="https://danta-med.ancodalabs.com" target="_blank" data-t="3000" data-fx="zoom"><div class="code"><!--QR--><i><svg class="logo"><use href="#danta-logo"/></svg></i></div><b>Scan to try Danta</b></a>
   <h1 class="abs"><span id="t10a" data-full="Doctor saab, bolnus."></span><br><span class="it" id="t10b" data-full="Danta lekhchha."></span></h1>
   <div class="abs thx" data-t="2500" data-fx="zoom"><span class="deva">धन्यवाद</span> · Thank you</div>
-  <div class="abs made" data-t="2900">Made in Nepal. Digitizing healthcare for emerging nations.</div>
+  <div class="abs made" data-t="2900">Made in Nepal. Try it yourself.</div>
   <div class="abs foot" data-t="3400" data-fx="fade">
     <div><b>danta-med.ancodalabs.com</b> · Ancoda Labs Pvt. Ltd.</div>
-    <div class="mut">Nepal's nominee, World Summit Awards 2026</div>
+    <div class="mut">sushant@ancodalabs.com</div>
   </div>
-  <aside class="notes">[8s · by 3:33] Doctor saab, bolnus. Danta lekhchha. Scan the code to try it. Dhanyabad.</aside>
+  <aside class="notes">[8s · by 3:27] Doctor saab, bolnus. Danta lekhchha. Don't take our word for it. Scan the code and try it. Dhanyabad.</aside>
 </section>
 
 <div id="prog"></div>
@@ -978,8 +951,9 @@ const scenes={
  s8(f){ demo.enter(f); },
  s8p(f){ proof.enter(f); },
  s9(f){ const cs=['f1','f2','f3','f4'].map($),tr=$('trend'),L=tr.getTotalLength();
+   const hd=$('trendhd'); hd.style.transition='opacity .3s'; hd.style.opacity=f?1:0;
    cs.forEach(c=>c.classList.toggle('in',!!f)); tr.style.transition='none'; tr.style.strokeDasharray=f?'6 20':L; tr.style.strokeDashoffset=f?0:L;
-   if(f) return; cs.forEach((c,i)=>T(()=>c.classList.add('in'),700+i*550));
+   if(f) return; cs.forEach((c,i)=>T(()=>c.classList.add('in'),700+i*550)); T(()=>hd.style.opacity=1,2400);
    T(()=>{tr.style.transition='stroke-dashoffset 1.6s ease';tr.style.strokeDashoffset=0;},900);
    T(()=>{tr.style.transition='none';tr.style.strokeDasharray='6 20';},2700); },
 };
