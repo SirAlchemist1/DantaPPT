@@ -423,7 +423,8 @@ body.print #notes{display:none}
 #steam .sub b{color:#fff;font-weight:700}
 #steam .uni{left:96px;top:396px;width:1100px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
 #steam .u{display:flex;align-items:center;gap:24px;height:196px;padding:0 30px;border-radius:32px;background:var(--dk2);border:2px solid var(--dkline)}
-#steam .mo{flex:none;width:104px;height:104px;border-radius:26px;background:var(--cream);color:var(--dk);display:flex;align-items:center;justify-content:center;font:800 34px var(--sans);letter-spacing:-.01em}
+#steam .mo{flex:none;width:120px;height:120px;border-radius:28px;background:var(--cream);display:flex;align-items:center;justify-content:center}
+#steam .mo img{max-width:92px;max-height:92px;display:block}
 #steam .u b{display:block;font:800 38px/1.1 var(--sans);letter-spacing:-.015em;color:#fff}
 #steam .u span{display:block;font:500 32px var(--sans);color:var(--dkmut);margin-top:6px}
 #steam .yrs{left:1220px;top:396px;width:604px;height:412px;border-radius:36px;background:var(--amb);color:var(--ink);padding:30px 44px;display:flex;flex-direction:column;justify-content:center}
@@ -431,12 +432,15 @@ body.print #notes{display:none}
 #steam .yrs b{font:800 48px/1.1 var(--sans);letter-spacing:-.02em;margin-top:10px}
 #steam .yrs .tg{display:flex;gap:14px;margin-top:22px}
 #steam .yrs .tg span{font:700 32px var(--sans);padding:8px 22px;border-radius:999px;background:var(--ink);color:var(--amb)}
-#steam .mis{left:96px;top:832px;width:1728px;height:176px;padding:0 40px;border-radius:32px;background:var(--g);color:#fff;display:grid;grid-template-columns:380px 1fr 1fr;gap:36px;align-items:center}
+#steam .mis{left:96px;top:832px;width:1728px;height:184px;padding:0 40px;border-radius:32px;background:var(--g);color:#fff;display:grid;grid-template-columns:340px 1fr;gap:36px;align-items:center}
 #steam .mis .an em{display:block;font:800 32px var(--sans);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--dk)}
 #steam .mis .an b{display:block;font:800 52px/1.05 var(--sans);letter-spacing:-.02em}
 #steam .mis .an span{display:block;font:600 32px var(--sans);color:#D8F7E6}
-#steam .mis .pt{display:flex;align-items:center;gap:20px;font:700 38px/1.2 var(--sans);padding-left:36px;border-left:2px solid rgba(255,255,255,.35)}
-#steam .mis .pt i{flex:none;width:56px;height:56px;border-radius:50%;background:var(--dk);color:var(--amb);font:800 32px var(--sans);font-style:normal;display:flex;align-items:center;justify-content:center}
+#steam .mis .m3{padding-left:36px;border-left:2px solid rgba(255,255,255,.35)}
+#steam .mis .m3 em{display:block;font:800 32px var(--sans);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--dk)}
+#steam .mis .m3 p{display:flex;align-items:center;gap:14px;font:700 40px/1.1 var(--sans);margin:6px 0}
+#steam .mis .m3 p i{font-style:normal;font-weight:800;background:var(--dk);color:var(--amb);padding:4px 18px;border-radius:999px}
+#steam .mis .m3>span{display:block;font:600 32px var(--sans);color:#E3FBEE}
 #s9 .vsub{left:100px;top:470px;width:980px;font:600 38px/1.3 var(--sans);color:var(--gd)}
 #s9 .call{right:96px;top:200px;width:620px;padding:28px 36px;border-radius:32px;background:var(--ink);color:#fff}
 #s9 .call .n{font:800 72px/1 var(--sans);color:var(--amb);letter-spacing:-.03em}
@@ -730,24 +734,23 @@ body.print .caret::after{display:none}
 <!-- ============ TEAM ============ -->
 <section class="slide dark" id="steam" data-sec="THE TEAM">
   <h2 class="abs" data-t="100">Yo kasle <span class="it">banayo?</span></h2>
-  <div class="abs sub" data-t="400" data-fx="fade"><b>The mission:</b> help Nepal, and nations like it, take healthcare digital.</div>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>Research experience at these universities,</b> and years of shipping real products.</div>
   <div class="abs uni">
-    <div class="u" data-t="600" data-fx="zoom"><div class="mo">H</div><div><b>Harvard University</b><span>USA</span></div></div>
-    <div class="u" data-t="750" data-fx="zoom"><div class="mo">UMD</div><div><b>University of Maryland</b><span>College Park, USA</span></div></div>
-    <div class="u" data-t="900" data-fx="zoom"><div class="mo">MQ</div><div><b>Macquarie University</b><span>Sydney, Australia</span></div></div>
-    <div class="u" data-t="1050" data-fx="zoom"><div class="mo">DCE</div><div><b>Delhi College of Engineering</b><span>New Delhi, India</span></div></div>
+    <div class="u" data-t="600" data-fx="zoom"><div class="mo"><img src="media/uni-harvard.png" alt=""></div><div><b>Harvard University</b><span>USA</span></div></div>
+    <div class="u" data-t="750" data-fx="zoom"><div class="mo"><img src="media/uni-umd.png" alt=""></div><div><b>University of Maryland</b><span>College Park, USA</span></div></div>
+    <div class="u" data-t="900" data-fx="zoom"><div class="mo"><img src="media/uni-mq.png" alt=""></div><div><b>Macquarie University</b><span>Sydney, Australia</span></div></div>
+    <div class="u" data-t="1050" data-fx="zoom"><div class="mo"><img src="media/uni-dtu.png" alt=""></div><div><b>Delhi College of Engineering</b><span>New Delhi · now DTU</span></div></div>
   </div>
   <div class="abs yrs" data-t="1300" data-fx="right">
     <div class="n">9+</div>
-    <b>years shipping products</b>
-    <div class="tg"><span>Healthcare</span><span>Finance</span></div>
+    <b>years shipping products across</b>
+    <div class="tg"><span>Healthcare</span><span>AI</span><span>Finance</span></div>
   </div>
   <div class="abs mis" data-t="1700" data-fx="fade">
     <div class="an"><em>Built by</em><b>Ancoda Labs</b><span>ancodalabs.com</span></div>
-    <div class="pt"><i>1</i>AI research &amp; deployment lab, from Nepal</div>
-    <div class="pt"><i>2</i>Building AI that Nepal owns, holds and governs</div>
+    <div class="m3"><em>Our mission</em><p>Make healthcare <i>Accessible</i><i>Affordable</i><i>Adaptable</i></p><span>Every product we build, Danta-Med included, starts here.</span></div>
   </div>
-  <aside class="notes">[18s · by 3:07] Who built this? Ancoda Labs, an AI research lab from Nepal. Research experience at Harvard, Maryland, Macquarie and Delhi College of Engineering, and 9-plus years shipping healthcare and finance products. The mission: help Nepal, and nations like it, take healthcare digital.</aside>
+  <aside class="notes">[18s · by 3:07] Who built this? Ancoda Labs. Research experience at Harvard, Maryland, Macquarie and Delhi College of Engineering, and 9-plus years shipping products across healthcare, AI and finance. Our mission: make healthcare accessible, affordable and adaptable. You've seen all three today: the village camp, a fifth of the cost, and any way the doctor speaks.</aside>
 </section>
 
 <!-- ============ 9 FUTURE ============ -->
