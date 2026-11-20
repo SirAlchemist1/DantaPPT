@@ -42,6 +42,7 @@ def build_html():
     inner = re.search(r"<svg[^>]*>(.*)</svg>", logo, re.S).group(1)
     html = html.replace("<!--LOGO_SYMBOL-->",
                         f'<svg width="0" height="0" style="position:absolute"><symbol id="danta-logo" viewBox="{vb}">{inner}</symbol></svg>')
+    html = html.replace("<!--QR-->", (A / "qr-danta.svg").read_text())
     html = html.replace("url(ICT_L)", f"url(data:image/png;base64,{b64(A / 'ict-light.png')})")
     html = html.replace("url(ICT_D)", f"url(data:image/png;base64,{b64(A / 'ict-dark.png')})")
     wf = SRC / "danta-workflow.png"
