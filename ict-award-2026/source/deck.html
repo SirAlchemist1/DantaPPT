@@ -259,7 +259,7 @@ h1,h2{font-family:var(--sans);font-weight:800;letter-spacing:-.035em;line-height
 #sach .a.grn{background:var(--g);border-color:var(--g)}
 #sach .a.grn b{color:#fff}#sach .a.grn span{color:#E3FBEE}
 #sach .a.grn .ic{background:rgba(255,255,255,.2)}
-#sach .a .rib{position:absolute;right:-60px;top:34px;transform:rotate(35deg);background:var(--ink);color:var(--amb);font:800 26px var(--sans);letter-spacing:.08em;padding:6px 70px}
+#sach .a .rib{position:absolute;right:-60px;top:34px;transform:rotate(35deg);background:var(--ink);color:var(--amb);font:800 32px var(--sans);letter-spacing:.08em;padding:6px 70px}
 
 /* notes overlay */
 #notes{position:fixed;left:0;right:0;bottom:0;max-height:42vh;overflow:auto;background:rgba(8,20,15,.94);color:#E8F2EC;padding:18px 28px 22px;font:500 20px/1.5 var(--sans);z-index:20;transform:translateY(105%);transition:transform .35s var(--ease);border-top:3px solid var(--g)}
@@ -524,7 +524,7 @@ body.print .caret::after{display:none}
     <div class="fc fc3"><div class="k">Medicine</div><div class="v">Paracetamol 500mg</div></div>
     <div class="fc fc4"><svg width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#00A859"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Record saved</div>
   </div>
-  <aside class="notes">[~15s] Namaskar. Doctor saab, bolnus. Danta lekhchha. Doctor, you speak, Danta writes. We're Ancoda Labs. Danta-Med is Nepal's first AI medical scribe, built on Nepal's own AI, and we're revolutionizing how healthcare in Nepal and emerging nations goes digital.</aside>
+  <aside class="notes">[12s · by 0:12] Namaskar. Doctor saab, bolnus. Danta lekhchha. We're Ancoda Labs. Danta-Med is Nepal's first AI medical scribe, revolutionizing how Nepal and emerging nations digitize healthcare.</aside>
 </section>
 
 <!-- ============ 1 PROBLEM ============ -->
@@ -537,36 +537,12 @@ body.print .caret::after{display:none}
     <div class="cd" data-t="2100"><div class="n">1.5–2 hrs</div><p>of every doctor's day spent writing, not treating.</p></div>
   </div>
   <div class="abs rx" id="rx"><div class="rxh">Rx</div><div class="rxl"></div><svg viewBox="0 0 350 340" id="scrib"></svg><div class="q">?</div></div>
-  <aside class="notes">[~20s] Every one of us has seen this. A prescription only the pharmacist can read. Lose that slip and the patient's history is gone. And doctors lose one and a half to two hours every day just writing, instead of treating patients.</aside>
+  <aside class="notes">[15s · by 0:27] A prescription only the pharmacist can read. Lose the slip, lose the history. And doctors spend one and a half to two hours a day writing, not treating.</aside>
 </section>
 
 <!-- ============ 2 SOLUTION ============ -->
-<section class="slide" id="s2" data-sec="MEET DANTA">
-  <h2 class="abs">Tap garnus. Bolnus. <span class="it g">Bhayo!</span></h2>
-  <div class="abs sub">Tap. Speak. Done. Danta turns a normal consult into a clean digital record.</div>
-  <div class="abs ph"><div class="scr">
-    <div class="pt" id="pt">Patient #0142</div><div class="ripple" id="rip"></div>
-    <div class="mic" id="mic"><svg width="46" height="62" viewBox="0 0 22 30"><rect x="6" y="1" width="10" height="17" rx="5" fill="#fff"/><path d="M2 14a9 9 0 0 0 18 0M11 23v6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div>
-    <div class="bars" id="bars"></div>
-    <div class="rec" id="rec">TAP TO START</div>
-  </div></div>
-  <div class="abs tx"><div class="lab"><i></i>DOCTOR SPEAKING</div>
-    <div class="ln" id="l1" data-full="टाउको दुखेको ३ दिन भयो।"></div>
-    <div class="ln" id="l2" data-full="BP 140/90 छ।"></div>
-    <div class="ln" id="l3" data-full="Paracetamol 500mg दिन्छु।"></div>
-  </div>
-  <svg class="abs arrow" data-t="200" data-fx="fade" viewBox="0 0 60 60"><circle cx="30" cy="30" r="30" fill="#F6B53C"/><path d="M18 30h22M32 21l9 9-9 9" stroke="#0E1A14" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div class="abs cards">
-    <div class="card" id="c1"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></div><div><div class="k">COMPLAINT</div><div class="v">Headache, 3 days</div></div></div>
-    <div class="card" id="c2"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></div><div><div class="k">VITALS</div><div class="v">BP 140/90 mmHg</div></div></div>
-    <div class="card" id="c3"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="7" rx="3.5" transform="rotate(-35 12 12.5)"/><path d="M9.5 8.6l4.2 6"/></svg></div><div><div class="k">MEDICINE</div><div class="v">Paracetamol 500 mg</div></div></div>
-    <div class="saved" id="saved"><svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#00A859" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Saved to the hospital system</div>
-  </div>
-  <aside class="notes">[~15s] Danta fixes this in three words: Tap garnus, bolnus, bhayo. The doctor taps, talks normally in Nepali, English or both, and Danta turns it into a clean record: complaint, vitals, medicine, saved to the hospital system.</aside>
-</section>
-
 <!-- ============ 3 WORKFLOW ============ -->
-<section class="slide dark" id="s3" data-sec="DANTA'S WORKFLOW">
+<section class="slide dark" id="s3" data-sec="THE SOLUTION">
   <h2 class="abs" data-t="100">Bolai dekhi <span class="it">record samma.</span></h2>
   <div class="abs sub" data-t="400" data-fx="fade">From the doctor's voice to the hospital record, in five simple steps.</div>
   <img class="wfimg" id="wfimg" src="danta-workflow.png" alt="Danta workflow">
@@ -587,11 +563,11 @@ body.print .caret::after{display:none}
         <h3>Surakshit</h3><div class="en">Saved safely</div><p>In the hospital system. The history follows the patient.</p></div>
     </div>
   </div>
-  <aside class="notes">[~15s] Here's the whole flow. Bolnus: the doctor speaks. Sunchha: Danta listens. Bujhchha: it understands. Lekhchha: it writes the note. Surakshit: saved safely, and the history follows the patient. (Optional: click Watch the flow.)</aside>
+  <aside class="notes">[15s · by 0:42] Danta fixes it in five steps. Bolnus: the doctor speaks. Sunchha: Danta listens. Bujhchha: it understands. Lekhchha: it writes the note. Surakshit: saved to the hospital system.</aside>
 </section>
 
 <!-- ============ 4 NEPAL'S OWN AI ============ -->
-<section class="slide" id="s4" data-sec="WHAT'S NEW">
+<section class="slide" id="s4" data-sec="NOVELTY · NEPAL'S OWN AI">
   <h2 class="abs" data-t="100">नेपालकै आफ्नै <span class="ai">AI</span></h2>
   <div class="abs sub" data-t="400" data-fx="fade"><b>Same Nepali sentence, four AIs.</b> Global AI breaks it into bits. Ours reads it whole.</div>
   <div class="abs ex" data-t="500" data-fx="fade">
@@ -609,11 +585,11 @@ body.print .caret::after{display:none}
       <div class="vr"><b>TTS</b><span>अक्षर → बोली</span></div>
       <p>Trained on Devanagari.</p></div>
   </div>
-  <aside class="notes">[~25s] This is our real edge. We built Nepal's own AI model. Look at one simple Nepali sentence: "Namaste, tapailai kasto chha?" Alibaba's Qwen chops it into 24 broken pieces. Meta's Llama, 17. Google's Gemma, 8. Ours reads it in 6, whole words, the way we read. And it's not only Nepali: the same model understands Newari and Bhojpuri too. Our own speech-to-text and text-to-speech are trained on Devanagari, so it listens and speaks like a local.</aside>
+  <aside class="notes">[22s · by 1:04] Our edge: Nepal's own AI. One Nepali sentence. Alibaba's Qwen breaks it into 24 pieces, Meta 17, Google 8. Danta reads it in 6 whole words. It understands Newari and Bhojpuri too, and our own speech-to-text and text-to-speech are trained on Devanagari.</aside>
 </section>
 
 <!-- ============ 4c CHEAPER ============ -->
-<section class="slide dark" id="s4c" data-sec="WHY IT'S CHEAPER">
+<section class="slide dark" id="s4c" data-sec="NOVELTY · WHY IT'S CHEAPER">
   <h2 class="abs" data-t="100">Kam tukra, <span class="it">kam kharcha.</span></h2>
   <div class="abs sub" data-t="400" data-fx="fade"><b>AI bills by the piece, like a taxi meter.</b> Fewer pieces for the same Nepali means a smaller bill.</div>
   <div class="abs ch" data-t="500" data-fx="fade">
@@ -632,11 +608,11 @@ body.print .caret::after{display:none}
       <div><i>3</i><p><b>Runs on-premise</b><span>No cloud bill. Data stays put.</span></p></div>
     </div>
   </div>
-  <aside class="notes">[~20s] Why does this matter? Money. AI charges by the piece, like a taxi meter. To write 100 Nepali words, Qwen needs 652 pieces, Llama 375, GPT-4o about 232, Gemma 222. Danta needs 133. Same Nepali, roughly five times cheaper than Qwen. And because the voice AI is ours and runs inside the hospital, there's no per-minute foreign bill and the data never leaves. That's how a Nepali hospital can actually afford AI.</aside>
+  <aside class="notes">[17s · by 1:21] Why it matters: AI bills by the piece, like a taxi meter. For 100 Nepali words, Qwen needs 652 pieces. Danta needs 133. Same note, about five times cheaper. And our voice AI runs on-premise: no foreign bill, data stays in Nepal.</aside>
 </section>
 
 <!-- ============ 5 HEALTH CAMP ============ -->
-<section class="slide" id="s5" data-sec="RURAL NEPAL">
+<section class="slide" id="s5" data-sec="IMPACT · RURAL NEPAL">
   <div class="abs panel"></div>
   <svg class="abs land" viewBox="0 0 680 460" data-t="100" data-fx="fade">
     <circle cx="540" cy="90" r="54" fill="#F6B53C"/>
@@ -663,7 +639,7 @@ body.print .caret::after{display:none}
     <div class="row" data-t="2000" data-fx="left"><span class="b">3</span><span>The camp packs up. <b>The patient's history stays.</b></span></div>
   </div>
   <div class="abs first" data-t="3200" data-fx="fade">From city hospitals <span class="g">to the remotest village camp.</span></div>
-  <aside class="notes">[~15s] And for the first time in Nepal, this reaches rural health camps. Hundreds of patients a day, no network, no time to write. Danta keeps listening, every consult becomes a digital record, and the history stays after the camp leaves.</aside>
+  <aside class="notes">[12s · by 1:33] For the first time in Nepal, this reaches rural health camps. Hundreds of patients, weak network, no time to write. Every consult still becomes a digital record.</aside>
 </section>
 
 <!-- ============ 6 FEATURES ============ -->
@@ -678,11 +654,11 @@ body.print .caret::after{display:none}
     <div class="ft" data-t="1300"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M12 9v6M9 12h6"/></svg></div><h3>Hospital-ready</h3><p>Plugs into your system. Runs on-premise.</p></div>
     <div class="ft am" data-t="1450"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0E1A14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></svg></div><h3>Seconds, not minutes</h3><p>No typing. Check it, tap it, done.</p></div>
   </div>
-  <aside class="notes">[~10s] It fits the doctor, not the other way round. Nepali, English or mixed. Reads Devanagari. Fills the notes. Works on low network. Plugs into the hospital system.</aside>
+  <aside class="notes">[10s · by 1:43] It fits the doctor. Nepali, English or mixed. Fills the notes. Works on low network. Plugs into the existing hospital system.</aside>
 </section>
 
 <!-- ============ 7 IMPACT ============ -->
-<section class="slide" id="s7" data-sec="LIVE IN HOSPITALS">
+<section class="slide" id="s7" data-sec="USERBASE · LIVE IN HOSPITALS">
   <h2 class="abs" data-t="100">Aspatal ma live. <span class="it">Aaja nai.</span></h2>
   <div class="abs sub" data-t="400" data-fx="fade">Not a plan. In daily use in 2 hospitals since March 2026.</div>
   <div class="abs big" data-t="600" data-fx="zoom">
@@ -702,7 +678,7 @@ body.print .caret::after{display:none}
       <div class="x"><b>60%+ less paperwork</b> per doctor.</div>
     </div>
   </div>
-  <aside class="notes">[~15s] And this is live, today. Two hospitals, 35 doctors: 15 at the first, 20 at the second. Over 35,000 consults a month, and every recorded consult becomes a proper digital record, with no new system and no data-entry staff. And as a bonus, each doctor gets one and a half to two hours back every day. Sixty percent less paperwork, more time looking at the patient.</aside>
+  <aside class="notes">[15s · by 1:58] And it's live today. Two hospitals, 35 doctors, over 35,000 consults a month, each one a digital record. The bonus: every doctor gets one and a half to two hours back, every day.</aside>
 </section>
 
 <!-- ============ 8 DEMO ============ -->
@@ -733,11 +709,11 @@ body.print .caret::after{display:none}
     <div class="cg" id="dC2"><div class="cl"><b>Rx, pre-filled</b><span>Vitals, complaint, diagnosis, medicines.</span></div><div class="cl"><b>Doctor stays in charge</b><span>Review, edit, then Generate PDF.</span></div></div>
   </div>
   <div class="abs paper ui" id="dPaper"><img src="media/prescription.jpg" alt="Generated prescription"><div class="stamp"><svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#00A859" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Made by Danta</div></div>
-  <aside class="notes">[~60s] Bhanera hoina, dekhaera. Let me show you a real consult. Step one: pick the patient, tap record. Step two: Danta writes every word in Nepali. Step three: the prescription fills itself. Step four: a signed PDF, ready to print. (Press right arrow to step, or let it play.)</aside>
+  <aside class="notes">[40s · by 2:38] Bhanera hoina, dekhaera. A real consult. Tap record. Danta writes every Nepali word. The prescription fills itself. Signed PDF, ready to print. (Let it auto-play.)</aside>
 </section>
 
 <!-- ============ 8b PROOF ============ -->
-<section class="slide" id="s8p" data-sec="THE PROOF">
+<section class="slide" id="s8p" data-sec="QUALITY · THE PROOF">
   <h2 class="abs" data-t="100">Doctor le bhannubhayo.<br><span class="it">Danta le lekhyo.</span></h2>
   <div class="abs sub" data-t="400" data-fx="fade">Nepali conversation in. Clean prescription out.</div>
   <div class="abs tc" id="pTc" data-t="500" data-fx="left">
@@ -760,7 +736,7 @@ body.print .caret::after{display:none}
     <div class="hb" data-k="3" style="top:41.4%;height:23.8%"></div>
   </div>
   <svg class="links" id="pLinks" viewBox="0 0 1920 1080"></svg>
-  <aside class="notes">[~20s] And here's the proof. On the left, what the doctor actually said, in Nepali. On the right, what Danta wrote. Complaint, history, diagnosis, four medicines with dosage. Nobody typed a word.</aside>
+  <aside class="notes">[12s · by 2:50] Left: what the doctor said, in Nepali. Right: what Danta wrote. Complaint, history, diagnosis, four medicines with dosage. Nobody typed a word.</aside>
 </section>
 
 <!-- ============ ACHIEVEMENTS ============ -->
@@ -775,7 +751,7 @@ body.print .caret::after{display:none}
     <div class="a" data-t="1400" data-fx="zoom"><div class="ic" style="font:800 34px var(--deva);color:#00A859">अ</div><b>Beat the giants</b><span>Fewer pieces for Nepali than Google, Meta, Alibaba &amp; OpenAI</span></div>
     <div class="a" data-t="1600" data-fx="zoom"><div class="ic"><svg width="40" height="54" viewBox="0 0 22 30"><rect x="6" y="1" width="10" height="17" rx="5" fill="#00A859"/><path d="M2 14a9 9 0 0 0 18 0M11 23v6" stroke="#00A859" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></div><b>Own STT + TTS</b><span>Nepal's own voice AI, on Devanagari</span></div>
   </div>
-  <aside class="notes">[~15s] Quick proof we deliver. We're semi-finalists here and Nepal's nominee for the World Summit Awards. Live in 2 hospitals since March, 35,000 consults a month. Our tokenizer beats Google, Meta, Alibaba and OpenAI at Nepali, and we built our own speech-to-text and text-to-speech.</aside>
+  <aside class="notes">[8s · by 2:58] We're semi-finalists here, and Nepal's nominee for the World Summit Awards.</aside>
 </section>
 
 <!-- ============ TEAM ============ -->
@@ -798,11 +774,11 @@ body.print .caret::after{display:none}
     <div class="pt"><i>1</i>AI research &amp; deployment lab, from Nepal</div>
     <div class="pt"><i>2</i>Building AI that Nepal owns, holds and governs</div>
   </div>
-  <aside class="notes">[~15s] Who's behind this? Ancoda Labs, an AI research and deployment lab from Nepal, building AI that Nepal owns and governs. Our team has research experience at Harvard, the University of Maryland College Park, Macquarie University and Delhi College of Engineering, and over 9 years of shipping products in healthcare and finance. Our mission: revolutionize how healthcare in Nepal and emerging nations goes digital.</aside>
+  <aside class="notes">[15s · by 3:13] Built by Ancoda Labs, an AI research lab from Nepal. Our team has research experience at Harvard, Maryland, Macquarie and Delhi College of Engineering, and 9-plus years shipping healthcare and finance products.</aside>
 </section>
 
 <!-- ============ 9 FUTURE ============ -->
-<section class="slide" id="s9" data-sec="WHAT'S NEXT">
+<section class="slide" id="s9" data-sec="GROWTH · WHAT'S NEXT">
   <h2 class="abs" data-t="100">Aaja 2 aspatal.<br><span class="it">Bholi, Nepal bhari.</span></h2>
   <div class="abs vsub" data-t="400" data-fx="fade">Nepal first. Then every emerging nation.</div>
   <div class="abs call" data-t="3200" data-fx="right"><div class="n">60 crore+</div><p>people next door also read Devanagari. South Asia is the first step.</p></div>
@@ -811,7 +787,7 @@ body.print .caret::after{display:none}
   <div class="col" id="f2" style="left:520px;height:348px"><div class="bar" style="background:#CDEEDC"></div><div class="lbl" style="top:30px"><em>Bholi · Next</em><b>Hospitals</b><span>across all 7 provinces</span></div></div>
   <div class="col" id="f3" style="left:944px;height:428px"><div class="bar" style="background:#9FDDBD"></div><div class="lbl" style="top:30px"><em>Parsi · Then</em><b>Villages</b><span>every rural clinic and health camp</span></div></div>
   <div class="col last" id="f4" style="left:1368px;height:508px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Ani… · Beyond</em><b>Emerging nations</b><span>South Asia first, then beyond</span></div></div>
-  <aside class="notes">[~15s] Aaja 2 aspatal, bholi Nepal bhari. Next, hospitals across all 7 provinces, then every rural clinic and health camp. With 60 crore people next door reading Devanagari, South Asia is the first step, and then the emerging nations that face the same problem.</aside>
+  <aside class="notes">[12s · by 3:25] Aaja 2 aspatal, bholi Nepal bhari. Next, all 7 provinces, then every rural clinic. Then South Asia and the emerging nations.</aside>
 </section>
 
 <!-- ============ 10 CLOSE ============ -->
@@ -826,7 +802,7 @@ body.print .caret::after{display:none}
     <div><b>danta-med.ancodalabs.com</b> · Ancoda Labs Pvt. Ltd.</div>
     <div class="mut">Nepal's nominee, World Summit Awards 2026</div>
   </div>
-  <aside class="notes">[~10s] Doctor saab, bolnus. Danta lekhchha. Made in Nepal, and built to change how emerging nations digitize healthcare. Scan the code to try Danta. Dhanyabad.</aside>
+  <aside class="notes">[8s · by 3:33] Doctor saab, bolnus. Danta lekhchha. Scan the code to try it. Dhanyabad.</aside>
 </section>
 
 <div id="prog"></div>
@@ -954,7 +930,6 @@ const nf=n=>n.toLocaleString('en-US');
 (function scribble(){let seed=7;const r=()=>((seed=(seed*9301+49297)%233280)/233280);let h='';
   [60,120,180,240,295].forEach((y,li)=>{let x=20,d=`M ${x} ${y}`;const end=li===4?200:330;while(x<end){const w=14+r()*22,hh=10+r()*26;d+=` c ${(w*.3).toFixed(1)} ${(-hh).toFixed(1)} ${(w*.7).toFixed(1)} ${(-hh).toFixed(1)} ${(w*.5).toFixed(1)} ${(hh*.2).toFixed(1)} s ${(w*.2).toFixed(1)} ${(hh*.6).toFixed(1)} ${(w*.5).toFixed(1)} ${(-hh*.1).toFixed(1)}`;x+=w;}h+=`<path d="${d}"/>`;});
   h+='<path d="M 200 316 q 60 -12 130 4"/>';$('scrib').innerHTML=h;})();
-const bars=$('bars');for(let i=0;i<22;i++)bars.appendChild(document.createElement('i'));
 const tiles=$('tiles');for(let i=0;i<350;i++)tiles.appendChild(document.createElement('i'));
 const prog=$('prog');
 
@@ -978,20 +953,6 @@ const scenes={
    if(f) return; rx.getBoundingClientRect();
    let t=900; ps.forEach(p=>{T(()=>{p.style.transition='stroke-dashoffset .42s linear';p.style.strokeDashoffset=0;},t);t+=360;});
    T(()=>rx.classList.add('lost'),t+1200); T(()=>rx.classList.remove('lost'),t+4200); },
- s2(f){ const pt=$('pt'),rip=$('rip'),mic=$('mic'),rec=$('rec');
-   const L=[$('l1'),$('l2'),$('l3')],Cs=[$('c1'),$('c2'),$('c3')],sv=$('saved'),bs=[...bars.children];
-   let amp=0.06, target=0.06;
-   const loop=()=>{amp+=(target-amp)*.18; bs.forEach((b,i)=>{const n=target>.2?(0.25+Math.random()*.75):(.5+.5*Math.sin(performance.now()/300+i));b.style.height=Math.max(6,amp*n*100)+'%';}); raf.push(requestAnimationFrame(loop));};
-   const fin=()=>{pt.classList.add('tap');mic.classList.add('live');rec.textContent='SAVED';L.forEach(typeFull);L.forEach(l=>l.classList.add('done'));Cs.forEach(c=>c.classList.add('lit'));sv.classList.add('in');bs.forEach((b,i)=>b.style.height=(18+30*Math.abs(Math.sin(i*1.7)))+'%');};
-   pt.classList.remove('tap');mic.classList.remove('live');rec.textContent='TAP TO START';L.forEach(l=>{l.textContent='';l.classList.remove('done','caret');});Cs.forEach(c=>c.classList.remove('lit'));sv.classList.remove('in');
-   if(f){fin();return;}
-   raf.push(requestAnimationFrame(loop));
-   T(()=>{pt.classList.add('tap');rip.classList.remove('go');void rip.offsetWidth;rip.classList.add('go');},700);
-   T(()=>{mic.classList.add('live');rec.textContent='LISTENING';target=.08;},1300);
-   let t=1800;
-   L.forEach((l,i)=>{const n=[...l.dataset.full].length,sp=60;
-     T(()=>{target=.95;},t); type(l,t,sp,()=>{target=.1;l.classList.add('done');T(()=>Cs[i].classList.add('lit'),250);}); t+=n*sp+900;});
-   T(()=>{target=.04;rec.textContent='SAVED';sv.classList.add('in');},t+300); },
  s3(f){ const tr=$('track'),ws=['w1','w2','w3','w4','w5'].map($);
    tr.classList.toggle('in',!!f); ws.forEach(w=>w.classList.toggle('in',!!f)); if(f) return;
    T(()=>tr.classList.add('in'),700); ws.forEach((w,i)=>T(()=>w.classList.add('in'),800+i*520)); },
