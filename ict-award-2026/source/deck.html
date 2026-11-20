@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Danta-Med · Product ICT Award 2026</title>
+<style>
+/*FONTS*/
+:root{
+  --cream:#FAF6EE;--paper:#FFFFFF;--ink:#0E1A14;--mut:#5B6862;--line:#E7E1D4;
+  --g:#00A859;--gd:#0E634C;--gs:#E1F3E8;--gs2:#C8EBD6;--lg1:#0E634C;--lg2:#093F31;
+  --amb:#F6B53C;--amb2:#FDE6B5;--red:#D7263D;--blue:#1F3C88;
+  --dk:#06231B;--dk2:#0D3A2D;--dkline:#1B4D3D;--dkmut:#8FB8A7;
+  --sans:"Bric","Anek",system-ui,sans-serif;--deva:"Anek","Bric",sans-serif;
+  --serif:"ISerif",Georgia,serif;--mono:"GMono","Anek",monospace;
+  --ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden}
+body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:40px}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center;overflow:hidden;background:var(--cream)}
+.slide{position:absolute;inset:0;background:var(--cream);opacity:0;visibility:hidden;transform:translateX(50px);transition:opacity .6s var(--ease),transform .6s var(--ease),visibility 0s .6s;overflow:hidden}
+.slide.back{transform:translateX(-50px)}
+.slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease),visibility 0s}
+.slide.dark{background:var(--dk);color:#fff}
+.slide.amber{background:var(--amb)}
+.abs{position:absolute}
+
+/* ---------- chrome ---------- */
+.brand{position:absolute;left:96px;top:58px;display:flex;align-items:center;gap:18px;z-index:4}
+.brand .bm{width:72px;height:72px;border-radius:22px;display:flex;align-items:center;justify-content:center}
+.brand .bm svg{width:66px;height:66px}
+.dark .brand .bm{background:var(--cream)}
+.dark .brand .bm svg{width:56px;height:56px}
+.logo{display:block}
+.brand .wm{font:800 44px var(--sans);letter-spacing:-.03em}
+.brand .wm span{color:var(--lg1)}
+.dark .brand .wm{color:#fff}
+.dark .brand .wm span{color:var(--g)}
+.amber .brand .wm span{color:var(--ink);opacity:.55}
+.sec{margin-left:18px;padding-left:28px;border-left:3px solid var(--line);height:48px;font:600 32px var(--sans);letter-spacing:.03em;color:var(--mut);display:flex;gap:14px;align-items:center}
+.sec b{font-weight:800;color:var(--g)}
+.dark .sec{color:var(--dkmut);border-left-color:var(--dkline)}
+.amber .sec{color:#6B4A0C;border-left-color:rgba(60,40,0,.25)}.amber .sec b{color:var(--ink)}
+.ict{position:absolute;right:56px;top:26px;width:200px;height:150px;background-size:contain;background-repeat:no-repeat;background-position:center;z-index:4}
+.ict.l{background-image:url(ICT_L)}
+.ict.d{background-image:url(ICT_D)}
+.amber .ict{background-color:#fff;border-radius:24px;background-size:82%;}
+h1,h2{font-family:var(--sans);font-weight:800;letter-spacing:-.035em;line-height:.98}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.g{color:var(--g)}.amb{color:var(--amb)}.mut{color:var(--mut)}
+.deva{font-family:var(--deva)}
+.pill{display:inline-flex;align-items:center;gap:14px;padding:10px 26px;border-radius:999px;font:700 32px var(--sans);letter-spacing:.01em}
+
+/* step animation */
+[data-t]{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+[data-fx=fade]{transform:none}
+[data-fx=zoom]{transform:scale(.88)}
+[data-fx=left]{transform:translateX(-40px)}
+[data-fx=right]{transform:translateX(40px)}
+[data-t].in{opacity:1;transform:none}
+.caret::after{content:"";display:inline-block;width:.07em;height:.82em;background:var(--g);margin-left:.06em;vertical-align:-.06em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse{0%{transform:scale(.5);opacity:.55}100%{transform:scale(1);opacity:0}}
+@keyframes wv{0%,100%{height:18%}50%{height:92%}}
+
+/* ---------- S0 cover ---------- */
+#s0 .made{left:96px;top:196px;background:#fff;border:2px solid var(--line);color:var(--ink)}
+#s0 .made svg{width:30px;height:38px}
+#s0 h1{left:96px;top:270px;width:1040px;font-size:140px}
+#s0 h1 .it{font-size:158px;color:var(--g);display:inline-block;margin-top:6px}
+#s0 .sub{left:100px;top:730px;width:1000px;font:500 42px/1.3 var(--sans);color:var(--ink)}
+#s0 .sub b{font-weight:800}
+#s0 .who{left:100px;top:890px;font:500 32px/1.45 var(--sans);color:var(--mut);padding-left:24px;border-left:5px solid var(--g)}
+#s0 .who b{color:var(--ink);font-weight:700}
+#s0 .hero{left:1120px;top:200px;width:720px;height:800px}
+#s0 .rings{position:absolute;left:110px;top:150px;width:500px;height:500px}
+#s0 .rings i{position:absolute;inset:0;border-radius:50%;background:var(--g);opacity:0;animation:pulse 3s ease-out infinite}
+#s0 .rings i:nth-child(2){animation-delay:1s}#s0 .rings i:nth-child(3){animation-delay:2s}
+#s0 .core{position:absolute;left:215px;top:255px;width:290px;height:290px;filter:drop-shadow(0 30px 40px rgba(6,60,40,.3))}
+#s0 .core svg{width:100%;height:100%}
+#s0 .rings i{background:var(--lg1)}
+#s0 .fc{position:absolute;background:#fff;border-radius:26px;padding:20px 28px;box-shadow:0 24px 50px rgba(30,40,20,.12);border:2px solid var(--line);animation:bob 5s ease-in-out infinite}
+#s0 .fc .k{font:700 32px var(--sans);color:var(--g);letter-spacing:.04em;text-transform:uppercase}
+#s0 .fc .v{font:700 44px/1.15 var(--deva);margin-top:2px}
+#s0 .fc1{left:0;top:30px}
+#s0 .fc2{left:440px;top:170px;animation-delay:-1.6s}
+#s0 .fc3{left:0;top:600px;animation-delay:-3.2s}
+#s0 .fc4{left:400px;top:740px;background:var(--ink);border-color:var(--ink);color:#fff;display:flex;gap:14px;align-items:center;font:700 36px var(--sans);animation-delay:-2.4s}
+
+/* ---------- S1 problem ---------- */
+#s1 h2{left:96px;top:200px;width:1180px;font-size:104px}
+#s1 .tr{left:100px;top:548px;font-size:52px;color:#4A3307}
+#s1 .cards{left:96px;top:680px;display:flex;gap:28px}
+#s1 .cd{width:370px;height:300px;background:#FFF8E8;border-radius:32px;padding:34px 36px;box-shadow:0 20px 40px rgba(110,70,0,.18)}
+#s1 .cd .n{font:800 58px/1 var(--sans);letter-spacing:-.03em}
+#s1 .cd .n.r{color:var(--red)}
+#s1 .cd p{font:500 36px/1.28 var(--sans);margin-top:18px;color:#3A2A08}
+#s1 .rx{left:1310px;top:280px;width:500px;height:660px;background:#FFFDF7;border-radius:18px;transform:rotate(-5deg);box-shadow:0 34px 70px rgba(90,60,0,.35);transition:transform 1.1s var(--ease),opacity 1.1s var(--ease)}
+#s1 .rx .rxh{position:absolute;left:46px;top:30px;font:italic 400 110px var(--serif);color:var(--blue)}
+#s1 .rx .rxl{position:absolute;left:46px;right:46px;top:170px;height:2px;background:#E6DCC4}
+#s1 .rx svg{position:absolute;left:24px;top:190px;width:452px;height:440px}
+#s1 .rx path{fill:none;stroke:var(--blue);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+#s1 .rx .q{position:absolute;left:-40px;bottom:-30px;width:110px;height:110px;border-radius:50%;background:var(--red);color:#fff;font:800 76px/110px var(--sans);text-align:center;transform:rotate(8deg);box-shadow:0 14px 30px rgba(150,0,20,.35)}
+#s1 .rx.lost{transform:rotate(16deg) translate(140px,560px);opacity:0}
+
+/* ---------- S2 solution ---------- */
+#s2 h2{left:96px;top:190px;font-size:116px}
+#s2 .sub{left:100px;top:322px;font:500 42px var(--sans);color:var(--mut)}
+#s2 .ph{left:96px;top:420px;width:340px;height:600px;background:var(--ink);border-radius:52px;padding:16px;box-shadow:0 30px 60px rgba(0,0,0,.18)}
+#s2 .scr{position:relative;width:100%;height:100%;background:var(--gs);border-radius:38px;overflow:hidden}
+#s2 .pt{position:absolute;left:20px;right:20px;top:26px;padding:16px 20px;background:#fff;border-radius:20px;font:700 34px var(--sans);transition:background .3s,color .3s}
+#s2 .pt.tap{background:var(--g);color:#fff}
+#s2 .ripple{position:absolute;left:150px;top:44px;width:40px;height:40px;border-radius:50%;background:rgba(0,168,89,.45);transform:scale(0);opacity:0}
+#s2 .ripple.go{animation:rip .7s ease-out}
+@keyframes rip{0%{transform:scale(0);opacity:1}100%{transform:scale(5);opacity:0}}
+#s2 .mic{position:absolute;left:50%;top:150px;width:120px;height:120px;margin-left:-60px;border-radius:50%;background:var(--gd);display:flex;align-items:center;justify-content:center;transition:background .3s,box-shadow .3s}
+#s2 .mic.live{background:var(--g);box-shadow:0 0 0 16px rgba(0,168,89,.18),0 0 0 32px rgba(0,168,89,.08)}
+#s2 .bars{position:absolute;left:24px;right:24px;top:310px;height:150px;display:flex;gap:7px;align-items:center}
+#s2 .bars i{flex:1;background:var(--gd);border-radius:5px;height:6%}
+#s2 .rec{position:absolute;left:0;right:0;bottom:36px;text-align:center;font:800 32px var(--sans);color:var(--gd);letter-spacing:.08em}
+#s2 .tx{left:480px;top:420px;width:640px;height:600px;background:#fff;border:2px solid var(--line);border-radius:36px;padding:34px 38px;box-shadow:0 24px 50px rgba(30,40,20,.07)}
+#s2 .tx .lab{display:flex;align-items:center;gap:12px;font:700 32px var(--sans);color:var(--mut);letter-spacing:.06em;margin-bottom:28px}
+#s2 .tx .lab i{width:16px;height:16px;border-radius:50%;background:var(--red);animation:blink 1.2s steps(1) infinite}
+#s2 .ln{font:600 46px/1.3 var(--deva);margin-bottom:30px;min-height:60px;color:var(--mut);transition:color .3s;padding-left:24px;border-left:6px solid var(--line)}
+#s2 .ln.done{color:var(--ink);border-left-color:var(--g)}
+#s2 .arrow{left:1130px;top:660px;width:60px;height:60px}
+#s2 .cards{left:1200px;top:420px;width:624px}
+#s2 .card{display:flex;align-items:center;gap:22px;padding:22px 28px;border-radius:28px;border:2px solid var(--line);background:#fff;margin-bottom:20px;opacity:.3;transform:translateX(30px);transition:all .5s var(--ease)}
+#s2 .card.lit{opacity:1;transform:none;border-color:var(--g);box-shadow:0 18px 40px rgba(0,80,40,.12)}
+#s2 .card .ic{width:76px;height:76px;border-radius:22px;background:var(--gs);display:flex;align-items:center;justify-content:center;flex:none}
+#s2 .card .k{font:700 32px var(--sans);color:var(--g);letter-spacing:.05em}
+#s2 .card .v{font:700 40px var(--sans);margin-top:2px}
+#s2 .saved{display:flex;gap:18px;align-items:center;padding:24px 30px;border-radius:28px;background:var(--g);color:#fff;font:700 38px var(--sans);opacity:0;transform:translateY(20px);transition:all .5s var(--ease)}
+#s2 .saved.in{opacity:1;transform:none}
+
+/* ---------- S3 workflow ---------- */
+#s3 h2{left:96px;top:190px;font-size:112px}
+#s3 h2 .it{color:var(--amb);font-size:124px}
+#s3 .sub{left:100px;top:330px;font:500 40px var(--sans);color:var(--dkmut)}
+#s3 .flow{left:96px;top:470px;width:1728px;height:540px}
+#s3 .track{position:absolute;left:150px;right:150px;top:74px;height:6px;background:var(--dkline);border-radius:3px;overflow:hidden}
+#s3 .track i{position:absolute;inset:0;background:linear-gradient(90deg,var(--g),var(--amb));transform-origin:left;transform:scaleX(0);transition:transform 2.4s var(--ease)}
+#s3 .track.in i{transform:none}
+#s3 .steps{position:absolute;inset:0;display:flex;gap:22px}
+#s3 .st{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+#s3 .st .c{width:154px;height:154px;border-radius:50%;background:var(--dk2);border:4px solid var(--dkline);display:flex;align-items:center;justify-content:center;position:relative;transition:all .5s var(--ease)}
+#s3 .st.in .c{background:var(--g);border-color:var(--g);box-shadow:0 0 0 14px rgba(0,168,89,.15)}
+#s3 .st:last-child.in .c{background:var(--amb);border-color:var(--amb);box-shadow:0 0 0 14px rgba(246,181,60,.18)}
+#s3 .st .num{position:absolute;right:-6px;top:-6px;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--dk);font:800 30px/52px var(--sans)}
+#s3 .st h3{font:800 60px var(--sans);letter-spacing:-.03em;margin-top:34px}
+#s3 .st .en{font:700 32px var(--sans);color:var(--amb);margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
+#s3 .st p{font:500 34px/1.3 var(--sans);color:#D5E6DD;margin-top:18px;max-width:320px}
+#s3 .wfimg{position:absolute;left:96px;top:410px;width:1728px;height:600px;object-fit:contain;background:#fff;border-radius:36px;padding:24px;display:none}
+#s3.hasimg .wfimg{display:block}
+#s3.hasimg .flow{display:none}
+#s3 .wbtn{right:96px;top:318px;display:flex;align-items:center;gap:14px;height:66px;padding:0 30px 0 12px;border-radius:999px;background:var(--amb);color:var(--ink);font:800 32px var(--sans);box-shadow:0 14px 34px rgba(246,181,60,.3)}
+#s3 .wbtn i{width:46px;height:46px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center}
+#s3 .fv{position:absolute;left:400px;top:400px;width:1120px;height:630px;border-radius:32px;overflow:hidden;background:#fff;box-shadow:0 40px 90px rgba(0,0,0,.5);opacity:0;transform:scale(.94);pointer-events:none;transition:all .45s var(--ease);z-index:6}
+#s3 .fv video{width:100%;height:100%;display:block}
+#s3 .fv .x{position:absolute;right:18px;top:18px;width:58px;height:58px;border-radius:50%;background:var(--ink);color:#fff;font:700 34px/58px var(--sans);text-align:center}
+#s3.fvon .fv{opacity:1;transform:none;pointer-events:auto}
+#s3.fvon .flow{opacity:.12;transition:opacity .4s}
+
+/* ---------- S4 Nepal's own AI ---------- */
+#s4 h2{left:96px;top:160px;font:800 128px/1.1 var(--deva);letter-spacing:-.01em}
+#s4 h2 .ai{font-family:var(--sans);color:var(--g);letter-spacing:-.03em}
+#s4 .sub{left:100px;top:318px;font:500 38px var(--sans);color:var(--mut)}
+#s4 .sub b{color:var(--ink);font-weight:700}
+#s4 .ex{left:96px;top:390px;width:1250px;height:640px;background:#fff;border-radius:36px;border:2px solid var(--line);box-shadow:0 24px 50px rgba(30,40,20,.06);padding:26px 36px}
+#s4 .exh{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:16px;border-bottom:2px solid var(--line)}
+#s4 .exh .s{font:700 50px var(--deva)}
+#s4 .exh .s small{font:500 32px var(--sans);color:var(--mut);margin-left:16px}
+#s4 .exh .h{font:700 32px var(--sans);color:var(--mut);letter-spacing:.04em}
+#s4 .tr{display:flex;align-items:center;gap:20px;padding:14px 0;border-bottom:2px dashed var(--line);opacity:.25;transition:opacity .5s}
+#s4 .tr:last-child{border-bottom:0}
+#s4 .tr.in{opacity:1}
+#s4 .tr .nm{width:236px;flex:none}
+#s4 .tr .nm b{display:block;font:800 36px/1.1 var(--sans)}
+#s4 .tr .nm span{display:block;font:500 32px/1.1 var(--sans);color:var(--mut);margin-top:2px}
+#s4 .tks{flex:1;display:flex;flex-wrap:wrap;gap:7px}
+#s4 .tk{height:54px;min-width:40px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:600 34px var(--deva);background:#EFEDE7;color:#4A544F;opacity:0;transform:scale(.6);transition:opacity .25s,transform .3s var(--ease)}
+#s4 .tk.in{opacity:1;transform:none}
+#s4 .tk.bad{background:#FCEBC9;color:#9A6408;border:2px solid #E9B34F}
+#s4 .tk.byte{width:46px;background:repeating-linear-gradient(135deg,#F3D79C 0 7px,#E9BF6A 7px 14px);border:2px solid #E0A93E}
+#s4 .tk.ok{background:var(--gs);color:var(--gd);border:2px solid var(--g);font-weight:700}
+#s4 .tr .ct{width:100px;flex:none;text-align:right;font:800 64px/1 var(--sans);letter-spacing:-.03em;color:#A0A9A4;font-variant-numeric:tabular-nums}
+#s4 .tr.us{background:var(--gs);margin:0 -36px;padding:16px 36px;border-radius:0 0 34px 34px}
+#s4 .tr.us .ct{color:var(--g)}
+#s4 .tr.us .nm b{color:var(--gd)}
+#s4 .side{left:1376px;top:390px;width:448px;display:flex;flex-direction:column;gap:22px}
+#s4 .cd{border-radius:36px;padding:28px 32px}
+#s4 .cd .k{font:800 32px var(--sans);letter-spacing:.05em}
+#s4 .lang{background:var(--ink);color:#fff}
+#s4 .lang .k{color:var(--amb)}
+#s4 .lang ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px}
+#s4 .lang li{display:flex;align-items:baseline;justify-content:space-between;padding:5px 20px;border-radius:16px;background:rgba(255,255,255,.07)}
+#s4 .lang li b{font:700 38px/1.15 var(--deva)}
+#s4 .lang li span{font:500 32px var(--sans);color:var(--dkmut)}
+#s4 .voice{background:var(--g);color:#fff}
+#s4 .voice .k{color:#063A22}
+#s4 .voice .vr{display:flex;align-items:center;gap:16px;margin-top:14px}
+#s4 .voice .vr b{width:84px;height:52px;border-radius:14px;background:#fff;color:var(--gd);font:800 30px/52px var(--sans);text-align:center;flex:none}
+#s4 .voice .vr span{font:600 34px/1.15 var(--deva)}
+#s4 .voice .vr span{font:700 38px/1.1 var(--deva)}
+#s4 .voice p{font:600 32px/1.25 var(--sans);margin-top:16px;padding-top:14px;border-top:2px solid rgba(255,255,255,.3)}
+
+/* ---------- S4c cost ---------- */
+#s4c h2{left:96px;top:172px;font-size:112px}
+#s4c h2 .it{color:var(--amb);font-size:124px}
+#s4c .sub{left:100px;top:308px;font:500 38px var(--sans);color:var(--dkmut)}
+#s4c .sub b{color:#fff}
+#s4c .ch{left:96px;top:390px;width:1060px;height:636px;background:var(--dk2);border:2px solid var(--dkline);border-radius:36px;padding:30px 40px}
+#s4c .ch .t{font:800 36px var(--sans);color:#fff}
+#s4c .ch .t span{color:var(--dkmut);font-weight:500}
+#s4c .bars{margin-top:22px;display:flex;flex-direction:column;gap:16px}
+#s4c .br{display:flex;align-items:center;gap:20px;height:78px}
+#s4c .br .nm{width:230px;flex:none}
+#s4c .br .nm b{display:block;font:800 36px/1.1 var(--sans);color:#fff}
+#s4c .br .nm span{display:block;font:500 32px/1.1 var(--sans);color:var(--dkmut)}
+#s4c .br .trk{flex:1;height:58px;position:relative}
+#s4c .br .fill{position:absolute;left:0;top:0;bottom:0;border-radius:14px;background:#3C5A4E;transform-origin:left;transform:scaleX(0);transition:transform 1.1s var(--ease)}
+#s4c .br.in .fill{transform:none}
+#s4c .br .v{position:absolute;top:50%;transform:translateY(-50%);font:800 40px var(--sans);color:#fff;padding-left:16px;white-space:nowrap;opacity:0;transition:opacity .4s .7s;display:flex;align-items:center;gap:14px}
+#s4c .br.in .v{opacity:1}
+#s4c .br .x{font:800 32px var(--sans);padding:4px 14px;border-radius:999px;background:rgba(246,181,60,.18);color:var(--amb)}
+#s4c .br.us .fill{background:var(--g)}
+#s4c .br.us .nm b{color:var(--g)}
+#s4c .br.us .x{background:var(--g);color:var(--dk)}
+#s4c .fn{position:absolute;left:40px;bottom:26px;font:500 32px var(--sans);color:var(--dkmut)}
+#s4c .rt{left:1186px;top:390px;width:638px;display:flex;flex-direction:column;gap:22px}
+#s4c .meter{background:var(--amb);color:var(--ink);border-radius:36px;padding:26px 34px}
+#s4c .meter .k{font:800 32px var(--sans);letter-spacing:.04em}
+#s4c .mrow{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:8px 20px;border-radius:20px;background:rgba(255,255,255,.5)}
+#s4c .mrow span{font:700 34px var(--sans)}
+#s4c .mrow b{font:700 46px/1 var(--mono);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#7A1E10}
+#s4c .mrow.us{background:var(--ink);color:#fff}
+#s4c .mrow.us b{color:var(--g)}
+#s4c .meter small{display:block;font:500 32px var(--sans);color:#5A3E07;margin-top:12px}
+#s4c .why{background:var(--dk2);border:2px solid var(--dkline);border-radius:36px;padding:24px 32px;display:flex;flex-direction:column;gap:14px}
+#s4c .why div{display:flex;gap:18px;align-items:flex-start}
+#s4c .why i{width:52px;height:52px;border-radius:50%;background:var(--g);color:var(--dk);font:800 30px/52px var(--sans);font-style:normal;text-align:center;flex:none}
+#s4c .why b{display:block;font:800 36px/1.1 var(--sans);color:#fff}
+#s4c .why span{display:block;font:500 32px/1.2 var(--sans);color:var(--dkmut);margin-top:4px}
+
+/* ---------- achievements ---------- */
+#sach h2{left:96px;top:172px;font-size:112px}
+#sach h2 .it{color:var(--amb);font-size:124px}
+#sach .sub{left:100px;top:308px;font:500 38px var(--sans);color:var(--dkmut)}
+#sach .grid{left:96px;top:396px;width:1728px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#sach .a{position:relative;height:302px;border-radius:36px;padding:32px 36px;background:var(--dk2);border:2px solid var(--dkline);overflow:hidden}
+#sach .a .ic{width:80px;height:80px;border-radius:24px;background:rgba(0,168,89,.16);display:flex;align-items:center;justify-content:center}
+#sach .a b{display:block;font:800 46px/1.08 var(--sans);letter-spacing:-.02em;color:#fff;margin-top:22px}
+#sach .a span{display:block;font:500 32px/1.25 var(--sans);color:var(--dkmut);margin-top:8px}
+#sach .a.gold{background:linear-gradient(140deg,#F8C55A,#E9A425);border-color:#F6B53C}
+#sach .a.gold b{color:var(--ink)}#sach .a.gold span{color:#4A3307}
+#sach .a.gold .ic{background:rgba(255,255,255,.4)}
+#sach .a.grn{background:var(--g);border-color:var(--g)}
+#sach .a.grn b{color:#fff}#sach .a.grn span{color:#E3FBEE}
+#sach .a.grn .ic{background:rgba(255,255,255,.2)}
+#sach .a .rib{position:absolute;right:-60px;top:34px;transform:rotate(35deg);background:var(--ink);color:var(--amb);font:800 26px var(--sans);letter-spacing:.08em;padding:6px 70px}
+
+/* notes overlay */
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:42vh;overflow:auto;background:rgba(8,20,15,.94);color:#E8F2EC;padding:18px 28px 22px;font:500 20px/1.5 var(--sans);z-index:20;transform:translateY(105%);transition:transform .35s var(--ease);border-top:3px solid var(--g)}
+#notes.on{transform:none}
+#notes .hd{display:flex;justify-content:space-between;align-items:center;font:700 15px var(--sans);letter-spacing:.08em;color:var(--amb);margin-bottom:8px}
+#notes .hd b{font:800 22px var(--mono);color:#fff;letter-spacing:0}
+#notes .hd b.over{color:#F07A68}
+#notes p{margin:4px 0}
+aside.notes{display:none}
+body.print #notes{display:none}
+
+/* ---------- S5 health camp ---------- */
+#s5 .panel{left:0;top:0;width:820px;height:1080px;background:var(--dk)}
+#s5 .brand .wm{color:#fff}
+#s5 .sec{left:900px}
+#s5 .land{left:70px;top:220px;width:680px;height:460px}
+#s5 .phone{left:500px;top:420px;width:200px;height:350px;background:#0B0F0D;border-radius:34px;border:6px solid #2A3A34;padding:24px 18px}
+#s5 .sig{display:flex;gap:8px;align-items:flex-end;height:46px}
+#s5 .sig i{display:block;width:18px;background:var(--g);border-radius:3px;transition:background .4s,opacity .4s}
+#s5 .sig i.off{background:#3A4A44;opacity:.6}
+#s5 .x{font:800 32px var(--sans);color:#F07A68;margin-top:10px;opacity:0;transition:opacity .4s;letter-spacing:.04em}
+#s5 .x.in{opacity:1}
+#s5 .wv{position:absolute;left:18px;right:18px;bottom:40px;height:120px;display:flex;gap:7px;align-items:center}
+#s5 .wv i{flex:1;background:var(--g);border-radius:4px;height:20%;animation:wv 1s ease-in-out infinite}
+#s5 .bub{left:70px;top:800px;width:680px;padding:30px 38px;background:var(--g);border-radius:34px 34px 34px 8px;font:800 46px/1.15 var(--sans);color:var(--dk)}
+#s5 .bub small{display:block;font:500 34px var(--sans);color:#053A22;margin-top:10px}
+#s5 .tagf{left:900px;top:190px;background:var(--amb);color:var(--ink)}
+#s5 h2{left:900px;top:270px;width:960px;font-size:98px}
+#s5 h2 .it{font-size:110px;color:var(--g)}
+#s5 .rows{left:900px;top:510px;width:930px}
+#s5 .row{display:flex;gap:26px;align-items:flex-start;margin-bottom:22px;font:500 37px/1.22 var(--sans)}
+#s5 .row .b{width:64px;height:64px;border-radius:20px;background:var(--gs);color:var(--gd);font:800 36px/64px var(--sans);text-align:center;flex:none}
+#s5 .row b{font-weight:800}
+#s5 .first{left:900px;top:890px;width:924px;padding:26px 34px;border-radius:28px;background:var(--ink);color:#fff;font:600 34px/1.3 var(--sans);white-space:nowrap}
+#s5 .first .g{font-weight:800}
+
+/* ---------- S6 features ---------- */
+#s6 h2{left:96px;top:180px;font-size:108px}
+#s6 h2 .it{color:var(--g);font-size:120px}
+#s6 .sub{left:100px;top:306px;font:500 40px var(--sans);color:var(--mut)}
+#s6 .grid{left:96px;top:396px;width:1728px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#s6 .ft{background:#fff;border:2px solid var(--line);border-radius:36px;padding:30px 36px;height:304px;box-shadow:0 18px 40px rgba(30,40,20,.05)}
+#s6 .ft .ic{width:76px;height:76px;border-radius:22px;background:var(--gs);display:flex;align-items:center;justify-content:center;font:800 34px var(--deva);color:var(--gd)}
+#s6 .ft.hl{background:var(--g);border-color:var(--g);color:#fff}
+#s6 .ft.hl .ic{background:rgba(255,255,255,.18);color:#fff}
+#s6 .ft.hl p{color:#E3FBEE}
+#s6 .ft.am{background:var(--amb);border-color:var(--amb)}
+#s6 .ft.am .ic{background:rgba(255,255,255,.45);color:var(--ink)}
+#s6 .ft.am p{color:#4A3307}
+#s6 .ft h3{font:800 42px/1.1 var(--sans);letter-spacing:-.02em;margin-top:22px;white-space:nowrap}
+#s6 .ft p{font:500 33px/1.25 var(--sans);color:var(--mut);margin-top:8px}
+
+/* ---------- S7 impact ---------- */
+#s7 h2{left:96px;top:190px;font-size:112px}
+#s7 .sub{left:100px;top:320px;font:500 42px var(--sans);color:var(--mut)}
+#s7 .big{left:96px;top:420px;width:1010px;height:600px;background:var(--dk);border-radius:40px;padding:44px 52px;color:#fff;overflow:hidden}
+#s7 .big .n{font:800 190px/1 var(--sans);letter-spacing:-.05em;color:var(--g);font-variant-numeric:tabular-nums}
+#s7 .big .l{font:600 44px var(--sans);margin-top:6px}
+#s7 .tiles{display:grid;grid-template-columns:repeat(50,1fr);gap:5px;margin-top:36px;width:900px}
+#s7 .tiles i{display:block;aspect-ratio:1;border-radius:3px;background:#173A2B;transition:background .2s}
+#s7 .tiles i.on{background:var(--g)}
+#s7 .big .key{font:500 32px var(--sans);color:var(--dkmut);margin-top:24px}
+#s7 .col{left:1136px;top:420px;width:688px;display:flex;flex-direction:column;gap:24px}
+#s7 .st{border-radius:36px;padding:28px 40px}
+#s7 .st .n{font:800 96px/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#s7 .st .l{font:600 36px/1.2 var(--sans);margin-top:6px}
+#s7 .s1{background:var(--gs);display:flex;gap:60px}
+#s7 .s1>div{flex:1}
+#s7 .s1 .l{color:var(--gd)}
+#s7 .s2{background:var(--amb)}
+#s7 .s2 .l{color:#3A2A08}
+#s7 .s2 .x{font:500 32px/1.3 var(--sans);color:#4A3307;margin-top:18px;padding-top:18px;border-top:2px dashed rgba(60,40,0,.25)}
+#s7 .s2 .x b{font-weight:800;color:var(--ink)}
+
+/* ---------- S8 live demo ---------- */
+.ui{cursor:pointer}
+#s8 h2{left:96px;top:172px;font-size:100px;width:820px}
+#s8 h2 .it{color:var(--g);font-size:112px}
+#s8 .sub{left:100px;top:398px;font:500 36px var(--sans);color:var(--dkmut)}
+#s8 .steps{left:96px;top:468px;width:780px;display:flex;flex-direction:column;gap:12px}
+#s8 .stp{position:relative;display:flex;align-items:center;gap:24px;height:104px;padding:0 28px;border-radius:28px;border:2px solid var(--dkline);background:rgba(255,255,255,.02);overflow:hidden;transition:background .4s,border-color .4s,transform .4s var(--ease)}
+#s8 .stp .nm{width:60px;height:60px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font:800 32px var(--sans);background:var(--dk2);color:var(--dkmut);border:2px solid var(--dkline);transition:all .4s}
+#s8 .stp h4{font:800 38px/1.05 var(--sans);letter-spacing:-.02em;color:#fff;opacity:.6;transition:opacity .4s}
+#s8 .stp p{font:500 32px/1.15 var(--sans);color:var(--dkmut);margin-top:4px;opacity:.6;transition:opacity .4s}
+#s8 .stp .bar{position:absolute;left:0;bottom:0;height:6px;width:0;background:var(--g)}
+#s8 .stp:hover{border-color:#2D6A54}
+#s8 .stp.on{background:var(--cream);border-color:var(--cream);transform:translateX(14px)}
+#s8 .stp.on h4{color:var(--ink);opacity:1}
+#s8 .stp.on p{color:var(--mut);opacity:1}
+#s8 .stp.on .nm{background:var(--g);border-color:var(--g);color:#fff}
+#s8 .stp.done .nm{background:var(--dk2);border-color:var(--g);color:var(--g)}
+#s8 .stp.done h4,#s8 .stp.done p{opacity:.85}
+#s8 .ctl{left:96px;top:952px;display:flex;gap:14px}
+#s8 .btn{display:flex;align-items:center;gap:12px;height:62px;padding:0 26px;border-radius:999px;border:2px solid var(--dkline);color:#fff;font:700 32px var(--sans);background:transparent;transition:background .3s}
+#s8 .btn:hover{background:var(--dk2)}
+#s8 .btn svg{width:24px;height:24px}
+#s8 .btn .pa{display:none}
+#s8.paused .btn .pa{display:block}#s8.paused .btn .pp{display:none}
+#s8 .hint{left:470px;top:968px;font:500 32px var(--sans);color:#5F8A79}
+
+.phone{position:absolute;width:404px;height:838px;border-radius:66px;background:#0B0F0D;padding:14px;box-shadow:0 0 0 2px #2A3A34,0 50px 90px rgba(0,0,0,.45)}
+.phone .scr{position:relative;width:376px;height:810px;border-radius:52px;overflow:hidden;background:#F6F7F5}
+.phone .sb{position:absolute;left:0;right:0;top:0;height:42px;display:flex;align-items:center;justify-content:space-between;padding:6px 34px 0 40px;font:700 22px var(--sans);color:#111;z-index:3;background:#fff}
+.phone .sb svg{height:16px}
+.phone .isl{position:absolute;left:50%;top:9px;width:112px;height:32px;margin-left:-56px;border-radius:20px;background:#000;z-index:4}
+.phone .ly{position:absolute;left:0;right:0;top:42px;height:768px;opacity:0;transform:scale(1.03);transition:opacity .5s,transform .6s var(--ease)}
+.phone .ly.on{opacity:1;transform:none;z-index:2}
+.phone .ly img,.phone .ly video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.phone .mask{position:absolute;left:3.5%;right:3.5%;top:36%;bottom:13.1%;background:#F2F4F1}
+.phone .mask::before{content:"";position:absolute;left:12px;top:6px;width:4px;height:26px;background:var(--g);animation:blink 1s steps(1) infinite}
+#s8 .phone{left:960px;top:172px;transition:transform .7s var(--ease),filter .7s}
+#s8[data-step="3"] .phone{transform:translateX(-40px) scale(.94);filter:brightness(.55)}
+#s8 .rec{position:absolute;left:812px;top:122px;width:700px;text-align:center;font:800 32px var(--sans);letter-spacing:.06em;color:var(--amb);opacity:0;transition:opacity .4s}
+#s8 .rec i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--red);margin-right:10px;vertical-align:2px;animation:blink 1s steps(1) infinite}
+
+#s8 .calls{left:1420px;top:250px;width:420px}
+#s8 .cg{position:absolute;left:0;top:0;width:420px;display:flex;flex-direction:column;gap:26px;pointer-events:none}
+#s8 .cl{position:relative;padding:26px 30px;border-radius:28px;background:var(--dk2);border:2px solid var(--dkline);opacity:0;transform:translateX(30px);transition:all .5s var(--ease)}
+#s8 .cl::before{content:"";position:absolute;left:-58px;top:46px;width:56px;height:3px;background:linear-gradient(90deg,transparent,var(--g))}
+#s8 .cl::after{content:"";position:absolute;left:-66px;top:40px;width:14px;height:14px;border-radius:50%;background:var(--g);box-shadow:0 0 0 6px rgba(0,168,89,.25)}
+#s8 .cl b{display:block;font:800 36px/1.1 var(--sans);color:#fff;letter-spacing:-.01em}
+#s8 .cl span{display:block;font:500 32px/1.25 var(--sans);color:var(--dkmut);margin-top:8px}
+#s8 .cg.on .cl{opacity:1;transform:none}
+#s8 .cg.on .cl:nth-child(2){transition-delay:.25s}
+#s8 .paper{left:1250px;top:190px;width:590px;height:835px;background:#fff;border-radius:10px;box-shadow:0 50px 100px rgba(0,0,0,.55);transform:translate(120px,80px) rotate(8deg);opacity:0;transition:transform .9s var(--ease),opacity .6s}
+#s8 .paper img{width:100%;height:100%;display:block;border-radius:10px}
+#s8 .paper.on{transform:rotate(2.5deg);opacity:1}
+#s8 .paper.on.zoom{transform:translate(-330px,-20px) scale(1.18);z-index:8}
+#s8 .stamp{position:absolute;left:-34px;top:-30px;padding:14px 26px;border-radius:999px;background:var(--g);color:#fff;font:800 32px var(--sans);transform:rotate(-6deg);box-shadow:0 14px 30px rgba(0,120,60,.45);display:flex;align-items:center;gap:12px}
+
+/* ---------- S8p proof ---------- */
+#s8p h2{left:96px;top:172px;font-size:96px}
+#s8p h2 .it{color:var(--g);font-size:108px}
+#s8p .sub{left:100px;top:392px;font:500 36px var(--sans);color:var(--mut)}
+#s8p .tc{left:96px;top:458px;width:690px;height:566px;background:#fff;border:2px solid var(--line);border-radius:36px;padding:30px 36px;box-shadow:0 24px 50px rgba(30,40,20,.06)}
+#s8p .tc .lab{display:flex;justify-content:space-between;font:800 32px var(--sans);letter-spacing:.05em;color:var(--mut);margin-bottom:14px}
+#s8p .tc .lab span{color:var(--g)}
+#s8p .tl{font:500 32px/1.5 var(--deva);color:#2B3530;transition:color .4s}
+#s8p .tl em{font:700 30px var(--sans);font-style:normal;color:#A3ADA8;margin-right:6px}
+#s8p .tc.act .tl{color:#B6BEB9}
+#s8p .k{border-radius:8px;padding:1px 4px;transition:background .4s,color .4s,box-shadow .4s}
+#s8p .k.on{background:var(--amb2);color:var(--ink);box-shadow:0 0 0 2px var(--amb)}
+#s8p .chips{left:830px;top:470px;width:370px;display:flex;flex-direction:column;gap:20px}
+#s8p .ch{position:relative;height:118px;padding:18px 28px;border-radius:28px;background:#fff;border:2px solid var(--line);transition:all .4s var(--ease)}
+#s8p .ch b{display:block;font:800 40px/1.1 var(--sans);letter-spacing:-.02em}
+#s8p .ch span{display:block;font:500 32px/1.2 var(--sans);color:var(--mut);margin-top:4px;white-space:nowrap}
+#s8p .ch:hover{border-color:var(--gs2)}
+#s8p .ch.on{background:var(--ink);border-color:var(--ink);color:#fff;transform:scale(1.04)}
+#s8p .ch.on span{color:var(--amb)}
+#s8p .pp{left:1262px;top:212px;width:570px;height:806px;background:#fff;border-radius:12px;box-shadow:0 30px 70px rgba(30,40,20,.18)}
+#s8p .pp img{width:100%;height:100%;display:block;border-radius:12px}
+#s8p .hb{position:absolute;left:8.5%;right:8.5%;border:4px solid var(--g);border-radius:12px;background:rgba(0,168,89,.09);opacity:0;transform:scale(.97);transition:all .4s var(--ease)}
+#s8p .hb.on{opacity:1;transform:none}
+#s8p svg.links{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;z-index:3}
+#s8p svg.links path{fill:none;stroke-width:5;stroke-linecap:round;opacity:0;transition:opacity .4s}
+#s8p svg.links path.on{opacity:1}
+#s8p svg.links circle{opacity:0;transition:opacity .4s}
+#s8p svg.links circle.on{opacity:1}
+
+/* ---------- S9 future ---------- */
+#s9 h2{left:96px;top:190px;font-size:112px}
+#s9 h2 .it{color:var(--g);font-size:124px}
+#s9 .call{right:96px;top:200px;width:620px;padding:28px 36px;border-radius:32px;background:var(--ink);color:#fff}
+#s9 .call .n{font:800 72px/1 var(--sans);color:var(--amb);letter-spacing:-.03em}
+#s9 .call p{font:500 34px/1.3 var(--sans);margin-top:10px;color:#D5E6DD}
+#s9 .col{position:absolute;bottom:0;width:404px}
+#s9 .bar{position:absolute;left:0;right:0;top:0;bottom:0;border-radius:32px 32px 0 0;background:var(--gs);transform-origin:bottom;transform:scaleY(0);transition:transform .8s var(--ease)}
+#s9 .col.in .bar{transform:none}
+#s9 .col.last .bar{background:var(--g)}
+#s9 .lbl{position:absolute;left:28px;right:20px;opacity:0;transform:translateY(20px);transition:all .5s var(--ease) .35s}
+#s9 .col.in .lbl{opacity:1;transform:none}
+#s9 .lbl b{display:block;font:800 64px/1.05 var(--sans);letter-spacing:-.03em;margin-top:4px}
+#s9 .lbl em{display:block;font:700 32px var(--sans);font-style:normal;color:var(--gd);letter-spacing:.06em;text-transform:uppercase}
+#s9 .lbl span{display:block;font:500 34px/1.25 var(--sans);color:var(--ink);margin-top:10px}
+#s9 .col.last .lbl b,#s9 .col.last .lbl span{color:#fff}
+#s9 .col.last .lbl em{color:var(--dk)}
+#s9 svg.trend{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;z-index:3}
+#s9 svg.trend path{fill:none;stroke:var(--amb);stroke-width:8;stroke-linecap:round}
+
+/* ---------- S10 close ---------- */
+#s10 .wmk{right:40px;bottom:-90px;font:800 460px var(--deva);color:#0B2E23;line-height:1}
+#s10 .lgo{right:150px;top:250px;width:400px;height:400px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 22px rgba(250,246,238,.06),0 0 0 44px rgba(250,246,238,.03)}
+#s10 .lgo svg{width:270px;height:270px}
+#s10 h1{left:96px;top:230px;width:1500px;font-size:140px}
+#s10 h1 .it{font-size:158px;color:var(--g)}
+#s10 .thx{left:100px;top:560px;font:800 104px var(--sans);color:var(--amb);letter-spacing:-.03em}
+#s10 .thx .deva{font:800 108px var(--deva);letter-spacing:0}
+#s10 .made{left:100px;top:720px;font:600 44px var(--sans);color:#B5D3C6}
+#s10 .foot{left:100px;top:860px;font:500 34px/1.5 var(--sans);color:#fff}
+#s10 .foot b{font-weight:800}
+#s10 .foot .mut{color:var(--dkmut)}
+
+/* nav */
+#prog{position:absolute;left:0;bottom:0;height:8px;background:var(--g);z-index:7;transition:width .6s var(--ease)}
+
+/* print */
+body.print{background:#fff;overflow:visible;height:auto}
+body.print #viewport{position:static;display:block}
+body.print #stage{transform:none!important;height:auto;overflow:visible;background:none}
+body.print .slide{position:relative;opacity:1;visibility:visible;transform:none;height:1080px;width:1920px;overflow:hidden;page-break-after:always;transition:none}
+body.print #prog{display:none}
+body.print *{animation-play-state:paused!important}
+body.print .caret::after{display:none}
+@media (prefers-reduced-motion:reduce){.slide,[data-t]{transition:none!important}}
+@page{size:1920px 1080px;margin:0}
+</style>
+</head>
+<body>
+<!--LOGO_SYMBOL-->
+<div id="viewport"><div id="stage">
+
+<!-- ============ 0 COVER ============ -->
+<section class="slide" id="s0" data-sec="PRODUCT ICT AWARD 2026">
+  <div class="abs pill made" data-t="200" data-fx="fade"><svg viewBox="0 0 30 38"><path d="M2 2 L27 18 H11 L27 36 H2 Z" fill="#D7263D" stroke="#1F3C88" stroke-width="2.6" stroke-linejoin="round"/><circle cx="9" cy="13" r="2.6" fill="#fff"/><circle cx="9" cy="28" r="3.2" fill="#fff"/></svg>Made in Nepal, for Nepal</div>
+  <h1 class="abs"><span id="t0a" data-full="Doctor saab, bolnus."></span><br><span class="it" id="t0b" data-full="Danta lekhchha."></span></h1>
+  <div class="abs sub" data-t="2700"><b>Nepal's first AI medical scribe.</b> Doctors speak in Nepali or English. Danta writes the record.</div>
+  <div class="abs who" data-t="3200" data-fx="fade">
+    <div><b>Suryodaya Bikram Shahi</b> · Founder &amp; Executive Chairman</div>
+    <div><b>Sushant Raj Dangal</b> · Co-Founder &amp; CEO · Ancoda Labs Pvt. Ltd.</div>
+  </div>
+  <div class="abs hero" data-t="400" data-fx="zoom">
+    <div class="rings"><i></i><i></i><i></i></div>
+    <div class="core"><svg class="logo"><use href="#danta-logo"/></svg></div>
+    <div class="fc fc1"><div class="k">Complaint</div><div class="v">टाउको दुखेको ३ दिन</div></div>
+    <div class="fc fc2"><div class="k">Vitals</div><div class="v">BP 140/90</div></div>
+    <div class="fc fc3"><div class="k">Medicine</div><div class="v">Paracetamol 500mg</div></div>
+    <div class="fc fc4"><svg width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#00A859"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Record saved</div>
+  </div>
+  <aside class="notes">[~15s] Namaskar. Doctor saab, bolnus. Danta lekhchha. Doctor, you speak, Danta writes. We're Ancoda Labs, and Danta-Med is Nepal's first AI medical scribe, built on Nepal's own AI.</aside>
+</section>
+
+<!-- ============ 1 PROBLEM ============ -->
+<section class="slide amber" id="s1" data-sec="THE PROBLEM">
+  <h2 class="abs" data-t="200">Doctor ko handwriting? Pharmacist bahek kasaile bujhdaina.</h2>
+  <div class="abs tr it" data-t="900" data-fx="fade">Nobody can read it, except the pharmacist.</div>
+  <div class="abs cards">
+    <div class="cd" data-t="1500"><div class="n">Unreadable</div><p>Paper slips no other doctor can read.</p></div>
+    <div class="cd" data-t="1800"><div class="n r">Lost</div><p>Lose the slip and the patient's whole history goes with it.</p></div>
+    <div class="cd" data-t="2100"><div class="n">1.5–2 hrs</div><p>of every doctor's day spent writing, not treating.</p></div>
+  </div>
+  <div class="abs rx" id="rx"><div class="rxh">Rx</div><div class="rxl"></div><svg viewBox="0 0 350 340" id="scrib"></svg><div class="q">?</div></div>
+  <aside class="notes">[~20s] Every one of us has seen this. A prescription only the pharmacist can read. Lose that slip and the patient's history is gone. And doctors lose one and a half to two hours every day just writing, instead of treating patients.</aside>
+</section>
+
+<!-- ============ 2 SOLUTION ============ -->
+<section class="slide" id="s2" data-sec="MEET DANTA">
+  <h2 class="abs">Tap garnus. Bolnus. <span class="it g">Bhayo!</span></h2>
+  <div class="abs sub">Tap. Speak. Done. Danta turns a normal consult into a clean digital record.</div>
+  <div class="abs ph"><div class="scr">
+    <div class="pt" id="pt">Patient #0142</div><div class="ripple" id="rip"></div>
+    <div class="mic" id="mic"><svg width="46" height="62" viewBox="0 0 22 30"><rect x="6" y="1" width="10" height="17" rx="5" fill="#fff"/><path d="M2 14a9 9 0 0 0 18 0M11 23v6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div>
+    <div class="bars" id="bars"></div>
+    <div class="rec" id="rec">TAP TO START</div>
+  </div></div>
+  <div class="abs tx"><div class="lab"><i></i>DOCTOR SPEAKING</div>
+    <div class="ln" id="l1" data-full="टाउको दुखेको ३ दिन भयो।"></div>
+    <div class="ln" id="l2" data-full="BP 140/90 छ।"></div>
+    <div class="ln" id="l3" data-full="Paracetamol 500mg दिन्छु।"></div>
+  </div>
+  <svg class="abs arrow" data-t="200" data-fx="fade" viewBox="0 0 60 60"><circle cx="30" cy="30" r="30" fill="#F6B53C"/><path d="M18 30h22M32 21l9 9-9 9" stroke="#0E1A14" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="abs cards">
+    <div class="card" id="c1"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></div><div><div class="k">COMPLAINT</div><div class="v">Headache, 3 days</div></div></div>
+    <div class="card" id="c2"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></div><div><div class="k">VITALS</div><div class="v">BP 140/90 mmHg</div></div></div>
+    <div class="card" id="c3"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="7" rx="3.5" transform="rotate(-35 12 12.5)"/><path d="M9.5 8.6l4.2 6"/></svg></div><div><div class="k">MEDICINE</div><div class="v">Paracetamol 500 mg</div></div></div>
+    <div class="saved" id="saved"><svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#00A859" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Saved to the hospital system</div>
+  </div>
+  <aside class="notes">[~15s] Danta fixes this in three words: Tap garnus, bolnus, bhayo. The doctor taps, talks normally in Nepali, English or both, and Danta turns it into a clean record: complaint, vitals, medicine, saved to the hospital system.</aside>
+</section>
+
+<!-- ============ 3 WORKFLOW ============ -->
+<section class="slide dark" id="s3" data-sec="DANTA'S WORKFLOW">
+  <h2 class="abs" data-t="100">Bolai dekhi <span class="it">record samma.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade">From the doctor's voice to the hospital record, in five simple steps.</div>
+  <img class="wfimg" id="wfimg" src="danta-workflow.png" alt="Danta workflow">
+  <div class="abs wbtn ui" id="fBtn" data-t="900" data-fx="fade"><i><svg width="20" height="22" viewBox="0 0 10 11"><path d="M1.5 .8v9.4L9.3 5.5z" fill="#F6B53C"/></svg></i>Watch the flow · 35s</div>
+  <div class="fv ui" id="fv"><video id="fVid" src="media/flow.mp4" poster="media/flow.jpg" muted playsinline preload="auto"></video><div class="x" id="fX">✕</div></div>
+  <div class="abs flow">
+    <div class="track" id="track"><i></i></div>
+    <div class="steps">
+      <div class="st" id="w1"><div class="c"><span class="num">1</span><svg width="62" height="82" viewBox="0 0 22 30"><rect x="6" y="1" width="10" height="17" rx="5" fill="#fff"/><path d="M2 14a9 9 0 0 0 18 0M11 23v6" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></div>
+        <h3>Bolnus</h3><div class="en">You speak</div><p>Talk naturally, in Nepali, English or both.</p></div>
+      <div class="st" id="w2"><div class="c"><span class="num">2</span><svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></div>
+        <h3>Sunchha</h3><div class="en">Danta listens</div><p>Our own speech AI, even on a weak network.</p></div>
+      <div class="st" id="w3"><div class="c"><span class="num">3</span><svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.6L12 15l-1.8-4.4L5.5 9l4.7-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
+        <h3>Bujhchha</h3><div class="en">Understands</div><p>Finds the complaint, vitals and medicines.</p></div>
+      <div class="st" id="w4"><div class="c"><span class="num">4</span><svg width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></div>
+        <h3>Lekhchha</h3><div class="en">Writes the note</div><p>A clean note in seconds; the doctor checks it.</p></div>
+      <div class="st" id="w5"><div class="c"><span class="num">5</span><svg width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#0E1A14" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6z"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8"/></svg></div>
+        <h3>Surakshit</h3><div class="en">Saved safely</div><p>In the hospital system. The history follows the patient.</p></div>
+    </div>
+  </div>
+  <aside class="notes">[~15s] Here's the whole flow. Bolnus: the doctor speaks. Sunchha: Danta listens. Bujhchha: it understands. Lekhchha: it writes the note. Surakshit: saved safely, and the history follows the patient. (Optional: click Watch the flow.)</aside>
+</section>
+
+<!-- ============ 4 NEPAL'S OWN AI ============ -->
+<section class="slide" id="s4" data-sec="WHAT'S NEW">
+  <h2 class="abs" data-t="100">नेपालकै आफ्नै <span class="ai">AI</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>Same Nepali sentence, four AIs.</b> Global AI breaks it into bits. Ours reads it whole.</div>
+  <div class="abs ex" data-t="500" data-fx="fade">
+    <div class="exh"><div class="s">नमस्ते, तपाईंलाई कस्तो छ?<small>Hello, how are you?</small></div><div class="h">PIECES</div></div>
+    <div id="tokRows"></div>
+  </div>
+  <div class="abs side">
+    <div class="cd lang" data-t="2600" data-fx="right"><div class="k">EK AI, DHERAI BHASHA</div><ul>
+      <li><b>नेपाली</b><span>Nepali</span></li>
+      <li><b>नेपाल भाषा</b><span>Newari</span></li>
+      <li><b>भोजपुरी</b><span>Bhojpuri</span></li>
+    </ul></div>
+    <div class="cd voice" data-t="3000" data-fx="right"><div class="k">OUR OWN VOICE AI</div>
+      <div class="vr"><b>STT</b><span>बोली → अक्षर</span></div>
+      <div class="vr"><b>TTS</b><span>अक्षर → बोली</span></div>
+      <p>Trained on Devanagari.</p></div>
+  </div>
+  <aside class="notes">[~25s] This is our real edge. We built Nepal's own AI model. Look at one simple Nepali sentence: "Namaste, tapailai kasto chha?" Alibaba's Qwen chops it into 24 broken pieces. Meta's Llama, 17. Google's Gemma, 8. Ours reads it in 6, whole words, the way we read. And it's not only Nepali: the same model understands Newari and Bhojpuri too. Our own speech-to-text and text-to-speech are trained on Devanagari, so it listens and speaks like a local.</aside>
+</section>
+
+<!-- ============ 4c CHEAPER ============ -->
+<section class="slide dark" id="s4c" data-sec="WHY IT'S CHEAPER">
+  <h2 class="abs" data-t="100">Kam tukra, <span class="it">kam kharcha.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>AI bills by the piece, like a taxi meter.</b> Fewer pieces for the same Nepali means a smaller bill.</div>
+  <div class="abs ch" data-t="500" data-fx="fade">
+    <div class="t">Pieces to write 100 Nepali words <span>· lower is better</span></div>
+    <div class="bars" id="costBars"></div>
+    <div class="fn">FLORES+ Nepali benchmark · tokens per 100 words</div>
+  </div>
+  <div class="abs rt">
+    <div class="meter" data-t="2400" data-fx="right"><div class="k">SAME NEPALI NOTE, AI METER:</div>
+      <div class="mrow"><span>Alibaba Qwen 3</span><b>Rs <span id="mQ" style="font:inherit">0</span></b></div>
+      <div class="mrow us"><span>Danta</span><b>Rs <span id="mD" style="font:inherit">0</span></b></div>
+      <small>Illustration: the bill follows the pieces.</small></div>
+    <div class="why" data-t="3000" data-fx="right">
+      <div><i>1</i><p><b>Fewer pieces</b><span>Less computing in every consult.</span></p></div>
+      <div><i>2</i><p><b>Our own STT + TTS</b><span>No per-minute fees to foreign AI.</span></p></div>
+      <div><i>3</i><p><b>Runs on-premise</b><span>No cloud bill. Data stays put.</span></p></div>
+    </div>
+  </div>
+  <aside class="notes">[~20s] Why does this matter? Money. AI charges by the piece, like a taxi meter. To write 100 Nepali words, Qwen needs 652 pieces, Llama 375, GPT-4o about 232, Gemma 222. Danta needs 133. Same Nepali, roughly five times cheaper than Qwen. And because the voice AI is ours and runs inside the hospital, there's no per-minute foreign bill and the data never leaves. That's how a Nepali hospital can actually afford AI.</aside>
+</section>
+
+<!-- ============ 5 HEALTH CAMP ============ -->
+<section class="slide" id="s5" data-sec="RURAL NEPAL">
+  <div class="abs panel"></div>
+  <svg class="abs land" viewBox="0 0 680 460" data-t="100" data-fx="fade">
+    <circle cx="540" cy="90" r="54" fill="#F6B53C"/>
+    <polygon points="0,410 200,100 400,410" fill="#0E5C3F"/>
+    <polygon points="158,165 200,100 242,165 221,154 200,176 179,154" fill="#FFFFFF"/>
+    <polygon points="240,410 440,160 670,410" fill="#13724F"/>
+    <polygon points="400,210 440,160 480,210 460,200 440,220 420,200" fill="#FFFFFF"/>
+    <rect x="0" y="400" width="680" height="60" fill="#0B3324"/>
+    <polygon points="50,412 140,300 230,412" fill="#F6B53C"/><polygon points="120,412 140,335 160,412" fill="#0A1D15"/>
+    <polygon points="230,412 296,325 362,412" fill="#FFFFFF"/><polygon points="280,412 296,352 312,412" fill="#0A1D15"/>
+    <rect x="150" y="290" width="8" height="40" fill="#F6B53C"/><path d="M154 270h22l-6 10 6 10h-22z" fill="#D7263D"/>
+  </svg>
+  <div class="abs phone" data-t="400" data-fx="zoom">
+    <div class="sig" id="sig"><i style="height:25%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:100%"></i></div>
+    <div class="x" id="nosig">NO SIGNAL</div>
+    <div class="wv"><i></i><i style="animation-delay:.15s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.45s"></i><i style="animation-delay:.6s"></i><i style="animation-delay:.75s"></i></div>
+  </div>
+  <div class="abs bub" data-t="2600" data-fx="zoom">Network gayo? Danta sundai chha.<small>No signal? It keeps listening.</small></div>
+  <div class="abs pill tagf" data-t="300" data-fx="fade">FIRST TIME IN NEPAL</div>
+  <h2 class="abs" data-t="500">Health camp ma pani, <span class="it">record sabai digital.</span></h2>
+  <div class="abs rows">
+    <div class="row" data-t="1200" data-fx="left"><span class="b">1</span><span>Hundreds of patients in one long camp day, <b>every consult recorded by voice.</b></span></div>
+    <div class="row" data-t="1600" data-fx="left"><span class="b">2</span><span>No typing, no paper piles. <b>Doctors just keep treating.</b></span></div>
+    <div class="row" data-t="2000" data-fx="left"><span class="b">3</span><span>The camp packs up. <b>The patient's history stays.</b></span></div>
+  </div>
+  <div class="abs first" data-t="3200" data-fx="fade">From city hospitals <span class="g">to the remotest village camp.</span></div>
+  <aside class="notes">[~15s] And for the first time in Nepal, this reaches rural health camps. Hundreds of patients a day, no network, no time to write. Danta keeps listening, every consult becomes a digital record, and the history stays after the camp leaves.</aside>
+</section>
+
+<!-- ============ 6 FEATURES ============ -->
+<section class="slide" id="s6" data-sec="FEATURES">
+  <h2 class="abs" data-t="100">Jasari bolnuhunchha, <span class="it">tesari nai.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade">Speak the way you already do. Danta fits the doctor, not the other way round.</div>
+  <div class="abs grid">
+    <div class="ft hl" data-t="700"><div class="ic">अ A</div><h3>Nepali + English + mix</h3><p>Just like every OPD in Nepal actually talks.</p></div>
+    <div class="ft" data-t="850"><div class="ic">क</div><h3>Reads Devanagari</h3><p>Built on Nepal's own AI, not a translation.</p></div>
+    <div class="ft" data-t="1000"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/></svg></div><h3>Auto-filled notes</h3><p>Complaint, vitals and medicines, sorted for you.</p></div>
+    <div class="ft" data-t="1150"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.4" stroke-linecap="round"><path d="M5 19v-2M9.5 19v-5M14 19v-8M18.5 19V6"/></svg></div><h3>Low network? Works.</h3><p>Built for rural Nepal, not just Kathmandu.</p></div>
+    <div class="ft" data-t="1300"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#057A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M12 9v6M9 12h6"/></svg></div><h3>Hospital-ready</h3><p>Plugs into your system. Runs on-premise.</p></div>
+    <div class="ft am" data-t="1450"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0E1A14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></svg></div><h3>Seconds, not minutes</h3><p>No typing. Check it, tap it, done.</p></div>
+  </div>
+  <aside class="notes">[~10s] It fits the doctor, not the other way round. Nepali, English or mixed. Reads Devanagari. Fills the notes. Works on low network. Plugs into the hospital system.</aside>
+</section>
+
+<!-- ============ 7 IMPACT ============ -->
+<section class="slide" id="s7" data-sec="IMPACT &amp; USERS">
+  <h2 class="abs" data-t="100">Aankada aafai bolchhan.</h2>
+  <div class="abs sub" data-t="400" data-fx="fade">The numbers speak for themselves. Live and in daily use since March 2026.</div>
+  <div class="abs big" data-t="600" data-fx="zoom">
+    <div class="n"><span id="nBig">0</span>+</div>
+    <div class="l">consults every month</div>
+    <div class="tiles" id="tiles"></div>
+    <div class="key">1 square = 100 real consults</div>
+  </div>
+  <div class="abs col">
+    <div class="st s1" data-t="2800" data-fx="right">
+      <div><div class="n" id="nDoc">0</div><div class="l">doctors using it every day</div></div>
+      <div><div class="n" id="nHos">0</div><div class="l">hospitals, plus health camps</div></div>
+    </div>
+    <div class="st s2" data-t="3300" data-fx="right">
+      <div class="n">1.5–2 hrs</div><div class="l">back to every doctor, daily</div>
+      <div class="x">Together: <b>50+ doctor-hours a day</b> back with patients, not paperwork.</div>
+    </div>
+  </div>
+  <aside class="notes">[~15s] The numbers speak for themselves. Over 35,000 consults every month, 35 doctors, 2 hospitals plus health camps, live since March 2026. Each doctor gets one and a half to two hours back every day.</aside>
+</section>
+
+<!-- ============ 8 DEMO ============ -->
+<section class="slide dark" id="s8" data-sec="LIVE DEMO" data-step="0">
+  <h2 class="abs" data-t="100">Bhanera hoina,<br><span class="it">dekhaera.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade">One real Danta consult, start to finish.</div>
+  <div class="abs steps" data-t="500" data-fx="left">
+    <div class="stp ui" data-i="0"><span class="nm">1</span><div><h4>Start a consult</h4><p>Choose the patient. Tap record.</p></div><i class="bar"></i></div>
+    <div class="stp ui" data-i="1"><span class="nm">2</span><div><h4>Bolnus</h4><p>Danta writes it all, in Nepali.</p></div><i class="bar"></i></div>
+    <div class="stp ui" data-i="2"><span class="nm">3</span><div><h4>Rx, auto-filled</h4><p>The form fills itself from the talk.</p></div><i class="bar"></i></div>
+    <div class="stp ui" data-i="3"><span class="nm">4</span><div><h4>Signed PDF, ready</h4><p>Print it or share it. Done.</p></div><i class="bar"></i></div>
+  </div>
+  <div class="abs ctl" data-t="700" data-fx="fade">
+    <div class="btn ui" id="dPlay"><svg class="pp" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="#fff"/><rect x="14" y="4" width="5" height="16" rx="1.5" fill="#fff"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M6 3.5v17L20 12z" fill="#fff"/></svg><span id="dPlayL">Pause</span></div>
+    <div class="btn ui" id="dReplay"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>Replay</div>
+  </div>
+  <div class="rec" id="dRec"><i></i>REAL APP · NOT A MOCKUP</div>
+  <div class="phone ui" data-t="300" data-fx="zoom"><div class="scr">
+    <div class="isl"></div>
+    <div class="sb"><span>9:41</span><svg viewBox="0 0 70 16"><g fill="#111"><rect x="0" y="10" width="3.5" height="6" rx="1"/><rect x="5.5" y="7" width="3.5" height="9" rx="1"/><rect x="11" y="4" width="3.5" height="12" rx="1"/><rect x="16.5" y="1" width="3.5" height="15" rx="1"/><path d="M30 6.5a10 10 0 0 1 13 0l-1.6 1.7a7.6 7.6 0 0 0-9.8 0zM33 9.6a5.6 5.6 0 0 1 7 0L36.5 13z"/><rect x="48" y="2" width="19" height="11" rx="3" fill="none" stroke="#111" stroke-width="1.4"/><rect x="50" y="4" width="15" height="7" rx="1.6"/><rect x="68" y="5.5" width="1.6" height="4" rx=".8"/></g></svg></div>
+    <div class="ly" id="dL0"><img src="media/demo-start.jpg" alt=""><video id="dV0" src="media/demo-start.mp4" muted playsinline preload="auto"></video></div>
+    <div class="ly" id="dL1"><img src="media/transcript.jpg" alt="Nepali transcript"><div class="mask" id="dMask"></div></div>
+    <div class="ly" id="dL2"><img src="media/demo-rx.jpg" alt=""><video id="dV2" src="media/demo-rx.mp4" muted playsinline preload="auto"></video></div>
+  </div></div>
+  <div class="abs calls">
+    <div class="cg" id="dC0"><div class="cl"><b>Pick the patient</b><span>Name or ID, a few taps.</span></div><div class="cl"><b>One tap to record</b><span>Then just talk to the patient.</span></div></div>
+    <div class="cg" id="dC1"><div class="cl"><b>Nepali, word for word</b><span>Written in Devanagari as you speak.</span></div><div class="cl"><b>Every 15 seconds</b><span>Timestamped, easy to check later.</span></div></div>
+    <div class="cg" id="dC2"><div class="cl"><b>Rx, pre-filled</b><span>Vitals, complaint, diagnosis, medicines.</span></div><div class="cl"><b>Doctor stays in charge</b><span>Review, edit, then Generate PDF.</span></div></div>
+  </div>
+  <div class="abs paper ui" id="dPaper"><img src="media/prescription.jpg" alt="Generated prescription"><div class="stamp"><svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#00A859" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Made by Danta</div></div>
+  <aside class="notes">[~60s] Bhanera hoina, dekhaera. Let me show you a real consult. Step one: pick the patient, tap record. Step two: Danta writes every word in Nepali. Step three: the prescription fills itself. Step four: a signed PDF, ready to print. (Press right arrow to step, or let it play.)</aside>
+</section>
+
+<!-- ============ 8b PROOF ============ -->
+<section class="slide" id="s8p" data-sec="THE PROOF">
+  <h2 class="abs" data-t="100">Doctor le bhannubhayo.<br><span class="it">Danta le lekhyo.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade">Nepali conversation in. Clean prescription out.</div>
+  <div class="abs tc" id="pTc" data-t="500" data-fx="left">
+    <div class="lab">DOCTOR SAID <span>नेपाली · 1:15</span></div>
+    <div class="tl"><em>00:00</em>आज के भएको छ? <span class="k" data-k="0">मलाई अलि टाउको दुखेको छ। अलि चक्कर आउला जस्तो हुन्छ।</span> <span class="k" data-k="1">फुड पोइजन भएको थियो? छैन।</span></div>
+    <div class="tl"><em>00:15</em>हिजो के खानुभएको थियो? <span class="k" data-k="1">अलिकति बियर खाएको थिएँ।</span> <span class="k" data-k="2">ग्यास्ट्रिकले गर्दा हुन सक्छ।</span> <span class="k" data-k="3">प्यान टप खाली पेटमा खानुहोस्।</span></div>
+    <div class="tl"><em>00:30</em><span class="k" data-k="3">खाना खाएपछि डाइजेन।</span> <span class="k" data-k="2">पहिला माइग्रेन भएको थियो?</span></div>
+    <div class="tl"><em>00:45</em><span class="k" data-k="3">निम्स १०० एमजी, दिनको दुई पटक।</span></div>
+  </div>
+  <div class="abs chips" data-t="800" data-fx="fade">
+    <div class="ch ui" data-k="0"><b>Complaint</b><span>Headache, dizziness</span></div>
+    <div class="ch ui" data-k="1"><b>History</b><span>Beer last night</span></div>
+    <div class="ch ui" data-k="2"><b>Diagnosis</b><span>Gastric, migraine</span></div>
+    <div class="ch ui" data-k="3"><b>Medicines</b><span>4 drugs, with dosage</span></div>
+  </div>
+  <div class="abs pp" data-t="600" data-fx="right"><img src="media/prescription.jpg" alt="Prescription generated by Danta">
+    <div class="hb" data-k="0" style="top:25.2%;height:4.9%"></div>
+    <div class="hb" data-k="1" style="top:30.3%;height:4.6%"></div>
+    <div class="hb" data-k="2" style="top:35.1%;height:6.0%"></div>
+    <div class="hb" data-k="3" style="top:41.4%;height:23.8%"></div>
+  </div>
+  <svg class="links" id="pLinks" viewBox="0 0 1920 1080"></svg>
+  <aside class="notes">[~20s] And here's the proof. On the left, what the doctor actually said, in Nepali. On the right, what Danta wrote. Complaint, history, diagnosis, four medicines with dosage. Nobody typed a word.</aside>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="slide dark" id="sach" data-sec="ACHIEVEMENTS">
+  <h2 class="abs" data-t="100">Ahile samma ko <span class="it">upalabdhi.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade">Not a plan on paper. This has already happened.</div>
+  <div class="abs grid">
+    <div class="a gold" data-t="600" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0E1A14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></div><b>Semi-finalist</b><span>Product ICT Award 2026</span></div>
+    <div class="a" data-t="800" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#00A859" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><b>Nepal's nominee</b><span>World Summit Awards 2026</span><div class="rib">NEPAL</div></div>
+    <div class="a grn" data-t="1000" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M12 9v6M9 12h6"/></svg></div><b>Live in 2 hospitals</b><span>In daily use since March 2026</span></div>
+    <div class="a" data-t="1200" data-fx="zoom"><div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#00A859" stroke-width="2.2" stroke-linecap="round"><path d="M5 19v-5M10 19V9M15 19v-7M20 19V5"/></svg></div><b>35,000+ consults</b><span>every month, by 35 doctors</span></div>
+    <div class="a" data-t="1400" data-fx="zoom"><div class="ic" style="font:800 34px var(--deva);color:#00A859">अ</div><b>Beat the giants</b><span>Fewer pieces for Nepali than Google, Meta, Alibaba &amp; OpenAI</span></div>
+    <div class="a" data-t="1600" data-fx="zoom"><div class="ic"><svg width="40" height="54" viewBox="0 0 22 30"><rect x="6" y="1" width="10" height="17" rx="5" fill="#00A859"/><path d="M2 14a9 9 0 0 0 18 0M11 23v6" stroke="#00A859" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></div><b>Own STT + TTS</b><span>Nepal's own voice AI, on Devanagari</span></div>
+  </div>
+  <aside class="notes">[~15s] Quick proof we deliver. We're semi-finalists here and Nepal's nominee for the World Summit Awards. Live in 2 hospitals since March, 35,000 consults a month. Our tokenizer beats Google, Meta, Alibaba and OpenAI at Nepali, and we built our own speech-to-text and text-to-speech.</aside>
+</section>
+
+<!-- ============ 9 FUTURE ============ -->
+<section class="slide" id="s9" data-sec="WHAT'S NEXT">
+  <h2 class="abs" data-t="100">Aaja 2 aspatal.<br><span class="it">Bholi, Nepal bhari.</span></h2>
+  <div class="abs call" data-t="3200" data-fx="right"><div class="n">60 crore+</div><p>people next door also read Devanagari. Built for Nepal, ready for South Asia.</p></div>
+  <svg class="trend" viewBox="0 0 1920 1080"><path id="trend" d="M298 772 L722 692 L1146 612 L1560 532"/><path id="trendhd" d="M1539 518 L1572 530 L1546 553" style="stroke-dasharray:none"/></svg>
+  <div class="col" id="f1" style="left:96px;height:268px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Aaja · Today</em><b>2 hospitals</b><span>35 doctors, 35,000+ consults a month</span></div></div>
+  <div class="col" id="f2" style="left:520px;height:348px"><div class="bar" style="background:#CDEEDC"></div><div class="lbl" style="top:30px"><em>Bholi · Next</em><b>Hospitals</b><span>across all 7 provinces</span></div></div>
+  <div class="col" id="f3" style="left:944px;height:428px"><div class="bar" style="background:#9FDDBD"></div><div class="lbl" style="top:30px"><em>Parsi · Then</em><b>Villages</b><span>every rural clinic and health camp</span></div></div>
+  <div class="col last" id="f4" style="left:1368px;height:508px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Ani… · Beyond</em><b>South Asia</b><span>more languages, one region</span></div></div>
+  <aside class="notes">[~15s] Aaja 2 aspatal, bholi Nepal bhari. Next, hospitals across all 7 provinces, then every rural clinic and health camp. And with 60 crore people next door reading Devanagari, South Asia is the natural next step.</aside>
+</section>
+
+<!-- ============ 10 CLOSE ============ -->
+<section class="slide dark" id="s10" data-sec="THANK YOU">
+  <div class="abs wmk">दन्त</div>
+  <div class="abs lgo" data-t="2200" data-fx="zoom"><svg class="logo"><use href="#danta-logo"/></svg></div>
+  <h1 class="abs"><span id="t10a" data-full="Doctor saab, bolnus."></span><br><span class="it" id="t10b" data-full="Danta lekhchha."></span></h1>
+  <div class="abs thx" data-t="2500" data-fx="zoom"><span class="deva">धन्यवाद</span> · Thank you</div>
+  <div class="abs made" data-t="2900">Made in Nepal. For every patient in Nepal.</div>
+  <div class="abs foot" data-t="3400" data-fx="fade">
+    <div><b>danta-med.ancodalabs.com</b> · Ancoda Labs Pvt. Ltd.</div>
+    <div class="mut">Nepal's nominee, World Summit Awards 2026</div>
+  </div>
+  <aside class="notes">[~10s] Doctor saab, bolnus. Danta lekhchha. Made in Nepal, for every patient in Nepal. Dhanyabad.</aside>
+</section>
+
+<div id="prog"></div>
+</div></div>
+
+<script>
+(() => {
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage');
+const PRINT=location.search.includes('print');
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cur=-1, timers=[], raf=[];
+const T=(fn,ms)=>timers.push(setTimeout(fn,ms));
+function clearAll(){timers.forEach(clearTimeout);timers=[];raf.forEach(cancelAnimationFrame);raf=[];}
+function fit(){ if(PRINT) return; const s=Math.min(innerWidth/1920,innerHeight/1080); stage.style.transform=`scale(${s})`; }
+addEventListener('resize',fit); fit();
+const $=id=>document.getElementById(id);
+
+// shared chrome
+const LOGO='<svg class="logo"><use href="#danta-logo"/></svg>';
+slides.forEach((sl,i)=>{
+  const dark=sl.classList.contains('dark'), numbered=i>0&&i<slides.length-1;
+  sl.insertAdjacentHTML('afterbegin',
+    `<div class="brand"><div class="bm">${LOGO}</div><div class="wm">Danta<span>-Med</span></div><div class="sec">${numbered?`<b>${String(i).padStart(2,'0')}</b> `:''}${sl.dataset.sec||''}</div></div>`+
+    `<div class="ict ${dark?'d':'l'}"></div>`);
+});
+
+// optional assets: workflow image and demo video next to this file
+const wf=$('wfimg'); const wfOk=()=>wf.naturalWidth>0&&$('s3').classList.add('hasimg');
+wf.complete?wfOk():wf.addEventListener('load',wfOk); wf.addEventListener('error',()=>wf.remove());
+
+// ---- live demo: 4 steps, auto-advancing, clickable ----
+const demo=(()=>{
+  const sl=$('s8'),V=[$('dV0'),null,$('dV2')],L=[$('dL0'),$('dL1'),$('dL2')],C=[$('dC0'),$('dC1'),$('dC2')];
+  const S=[...sl.querySelectorAll('.stp')],mask=$('dMask'),paper=$('dPaper'),rec=$('dRec');
+  const RATE=1.5,TX_MS=7000;
+  let step=0,playing=true,active=false,el=0,last=0,loop=0;
+  V.forEach(v=>v&&(v.playbackRate=RATE,v.addEventListener('ended',()=>{if(active&&playing&&V[step]===v)set(step+1);})));
+  function bars(){S.forEach((s,i)=>{let p=i<step?1:0;
+      if(i===step){const v=V[i]; p=v?(v.duration?v.currentTime/v.duration:0):i===1?Math.min(1,el/TX_MS):1;}
+      s.querySelector('.bar').style.width=(p*100)+'%';});}
+  function tick(now){ if(!active) return; const dt=now-(last||now); last=now;
+    if(step===1){ if(playing) el+=dt; const p=Math.min(1,el/TX_MS); mask.style.top=(36+51*p)+'%'; mask.style.opacity=p>=1?0:1; if(p>=1&&playing) set(2); }
+    bars(); loop=requestAnimationFrame(tick); }
+  function set(i,fin){ step=Math.max(0,Math.min(3,i)); sl.dataset.step=step; el=0;
+    S.forEach((s,k)=>{s.classList.toggle('on',k===step);s.classList.toggle('done',k<step);s.querySelector('.nm').textContent=k<step?'✓':k+1;});
+    const li=Math.min(step,2); L.forEach((l,k)=>l.classList.toggle('on',k===li));
+    C.forEach((c,k)=>c.classList.toggle('on',k===step));
+    paper.classList.toggle('on',step===3); if(step!==3) paper.classList.remove('zoom'); rec.style.opacity=step<3?1:0;
+    V.forEach((v,k)=>{ if(!v) return; v.pause(); if(k===step){ if(!fin){v.currentTime=0;v.playbackRate=RATE; playing&&v.play().catch(()=>{});} } });
+    if(step===2&&fin) V[2].currentTime=V[2].duration||0;
+    mask.style.top=fin||step!==1?'87%':'36%'; mask.style.opacity=fin?0:1;
+    bars(); }
+  function play(on){ playing=on; sl.classList.toggle('paused',!on); $('dPlayL').textContent=on?'Pause':'Play';
+    const v=V[step]; if(v){ on?v.play().catch(()=>{}):v.pause(); } if(on&&step===3) set(0); }
+  S.forEach(s=>s.addEventListener('click',()=>{set(+s.dataset.i);}));
+  $('dPlay').addEventListener('click',()=>play(!playing));
+  $('dReplay').addEventListener('click',()=>{play(true);set(0);});
+  paper.addEventListener('click',()=>paper.classList.toggle('zoom'));
+  return {
+    enter(fin){ active=!fin; playing=!fin; sl.classList.toggle('paused',!!fin); $('dPlayL').textContent='Pause';
+      if(fin){ L.forEach(l=>l.querySelectorAll('video').forEach(v=>v.style.display='none')); set(3,true); return; }
+      set(0); last=0; cancelAnimationFrame(loop); loop=requestAnimationFrame(tick); playing=true; sl.classList.remove('paused'); },
+    leave(){ active=false; cancelAnimationFrame(loop); V.forEach(v=>v&&v.pause()); },
+    next(){ if(step<3){set(step+1);return true;} return false; },
+    prev(){ if(step>0){set(step-1);return true;} return false; },
+    get on(){return active;}
+  };
+})();
+
+// ---- workflow: the 35s flow film ----
+const fVid=$('fVid'),s3=$('s3');
+const flowClose=()=>{s3.classList.remove('fvon');fVid.pause();};
+$('fBtn').addEventListener('click',()=>{s3.classList.add('fvon');fVid.currentTime=0;fVid.play().catch(()=>{});});
+$('fX').addEventListener('click',flowClose);
+fVid.addEventListener('ended',flowClose);
+
+// ---- presenter notes: N toggles, T resets the 5-minute timer ----
+const notesEl=document.createElement('div');notesEl.id='notes';document.body.appendChild(notesEl);
+let tStart=Date.now();
+const mmss=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+function renderNotes(){ const sl=slides[cur]; if(!sl) return; const a=sl.querySelector('aside.notes'),sec=Math.floor((Date.now()-tStart)/1000);
+  notesEl.innerHTML=`<div class="hd"><span>SLIDE ${cur+1}/${slides.length} · NOTES (N to hide · T resets timer)</span><b class="${sec>300?'over':''}">${mmss(sec)} / 5:00</b></div><p>${a?a.textContent:''}</p>`; }
+setInterval(()=>notesEl.classList.contains('on')&&renderNotes(),1000);
+
+// ---- proof: link what was said to what was written ----
+const proof=(()=>{
+  const sl=$('s8p'),tc=$('pTc'),svg=$('pLinks'),CH=[...sl.querySelectorAll('.ch')];
+  let cur=-1,auto=true,tm=0;
+  const rel=el=>{const s=sl.getBoundingClientRect(),k=s.width/1920,r=el.getBoundingClientRect();return{l:(r.left-s.left)/k,t:(r.top-s.top)/k,w:r.width/k,h:r.height/k};};
+  function draw(keys){ let h='';
+    keys.forEach(k=>{ const sp=sl.querySelector(`.tc .k[data-k="${k}"]`),ch=CH[k],hb=sl.querySelector(`.hb[data-k="${k}"]`);
+      const a=rel(sp),c=rel(ch),b=rel(hb),cardR=rel(tc);
+      const x1=cardR.l+cardR.w,y1=a.t+a.h/2,x2=c.l,y2=c.t+c.h/2,x3=c.l+c.w,x4=b.l,y4=b.t+b.h/2;
+      h+=`<path class="on" stroke="#F6B53C" d="M${x1} ${y1} C${x1+40} ${y1} ${x2-40} ${y2} ${x2} ${y2}"/>`+
+         `<path class="on" stroke="#00A859" d="M${x3} ${y2} C${x3+40} ${y2} ${x4-50} ${y4} ${x4} ${y4}"/>`+
+         `<circle class="on" cx="${x1}" cy="${y1}" r="9" fill="#F6B53C"/><circle class="on" cx="${x4}" cy="${y4}" r="9" fill="#00A859"/>`; });
+    svg.innerHTML=h; }
+  function sel(keys){ tc.classList.toggle('act',keys.length>0);
+    sl.querySelectorAll('[data-k]').forEach(e=>e.classList.toggle('on',keys.includes(+e.dataset.k)));
+    draw(keys); }
+  function pick(k){ cur=k; sel([k]); setTimeout(()=>cur===k&&draw([k]),450); }
+  function cycle(){ if(!auto) return; pick((cur+1)%4); tm=setTimeout(cycle,3600); }
+  CH.forEach(c=>c.addEventListener('click',()=>{auto=false;clearTimeout(tm);pick(+c.dataset.k);}));
+  return {
+    enter(fin){ clearTimeout(tm); svg.innerHTML=''; sel([]);
+      if(fin){ sel([0,1,2,3]); return; }
+      auto=true; cur=-1; tm=setTimeout(cycle,1500); },
+    leave(){ clearTimeout(tm); },
+    next(){ if(cur<3){auto=false;clearTimeout(tm);pick(cur+1);return true;} return false; },
+    prev(){ if(cur>0){auto=false;clearTimeout(tm);pick(cur-1);return true;} return false; },
+    redraw(){ if(cur>=0) draw([cur]); }
+  };
+})();
+
+// helpers
+function type(el,ms0,speed=55,cb){const full=el.dataset.full;el.textContent='';el.classList.remove('caret');T(()=>el.classList.add('caret'),Math.max(0,ms0-120));
+  [...full].forEach((ch,i)=>T(()=>{el.textContent=full.slice(0,i+1); if(i===full.length-1){T(()=>el.classList.remove('caret'),500); cb&&cb();}},ms0+i*speed));}
+function typeFull(el){el.textContent=el.dataset.full;el.classList.remove('caret');}
+function steps(sl,finish){sl.querySelectorAll('[data-t]').forEach(e=>{e.classList.remove('in'); if(finish) e.classList.add('in'); else T(()=>e.classList.add('in'),+e.dataset.t);});}
+function count(el,to,dur,fmt,onp){const t0=performance.now();const f=now=>{let p=Math.min(1,(now-t0)/dur);p=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(to*p));onp&&onp(p);if(p<1)raf.push(requestAnimationFrame(f));};raf.push(requestAnimationFrame(f));}
+const nf=n=>n.toLocaleString('en-US');
+
+// static bits
+(function scribble(){let seed=7;const r=()=>((seed=(seed*9301+49297)%233280)/233280);let h='';
+  [60,120,180,240,295].forEach((y,li)=>{let x=20,d=`M ${x} ${y}`;const end=li===4?200:330;while(x<end){const w=14+r()*22,hh=10+r()*26;d+=` c ${(w*.3).toFixed(1)} ${(-hh).toFixed(1)} ${(w*.7).toFixed(1)} ${(-hh).toFixed(1)} ${(w*.5).toFixed(1)} ${(hh*.2).toFixed(1)} s ${(w*.2).toFixed(1)} ${(hh*.6).toFixed(1)} ${(w*.5).toFixed(1)} ${(-hh*.1).toFixed(1)}`;x+=w;}h+=`<path d="${d}"/>`;});
+  h+='<path d="M 200 316 q 60 -12 130 4"/>';$('scrib').innerHTML=h;})();
+const bars=$('bars');for(let i=0;i<22;i++)bars.appendChild(document.createElement('i'));
+const tiles=$('tiles');for(let i=0;i<350;i++)tiles.appendChild(document.createElement('i'));
+const prog=$('prog');
+
+// real tokenizer output for "नमस्ते, तपाईंलाई कस्तो छ?"; 0 = a broken byte, ◌ = a split-off sign
+const TOK=[
+ {n:'Qwen 3',c:'Alibaba',t:['न','म','स','◌्',0,'◌े',',',0,0,'प','◌ा',0,'◌ं','ल','◌ा',0,'क','स','◌्',0,'◌ो',0,0,'?']},
+ {n:'Llama 3',c:'Meta',t:['न','म','स','◌्त','◌े,','त','प','◌ाई','◌ं','ल','◌ाई','क','स','◌्त','◌ो','छ','?']},
+ {n:'Gemma 3',c:'Google',t:['नमस्ते',',','तपाईं','लाई','क','स्तो','छ','?']},
+ {n:'Danta',c:'Ancoda · Nepal',t:['नमस्ते',',','तपाईंलाई','कस्तो','छ','?'],us:1}];
+(function(){ $('tokRows').innerHTML=TOK.map(r=>`<div class="tr${r.us?' us':''}"><div class="nm"><b>${r.n}</b><span>${r.c}</span></div><div class="tks">${
+  r.t.map(x=>x===0?'<i class="tk byte"></i>':`<i class="tk${r.us?' ok':x[0]==='◌'?' bad':''}">${x}</i>`).join('')}</div><div class="ct">0</div></div>`).join(''); })();
+const COST=[{n:'Qwen 3',c:'Alibaba',v:652},{n:'Llama 3',c:'Meta',v:375},{n:'GPT-4o',c:'OpenAI',v:232,a:'~'},{n:'Gemma 3',c:'Google',v:222},{n:'Danta',c:'Ancoda · Nepal',v:133,us:1}];
+(function(){ $('costBars').innerHTML=COST.map(r=>`<div class="br${r.us?' us':''}"><div class="nm"><b>${r.n}</b><span>${r.c}</span></div><div class="trk"><div class="fill" style="width:${r.v/652*72}%"></div><div class="v" style="left:${r.v/652*72}%">${r.a||''}${r.v}<span class="x">${r.us?'1×':(r.v/133).toFixed(1)+'×'}</span></div></div></div>`).join(''); })();
+
+const scenes={
+ s0(f){ const a=$('t0a'),b=$('t0b'); if(f){typeFull(a);typeFull(b);return;} a.textContent='';b.textContent=''; type(a,300,55,()=>type(b,250,60)); },
+ s10(f){ const a=$('t10a'),b=$('t10b'); if(f){typeFull(a);typeFull(b);return;} a.textContent='';b.textContent=''; type(a,300,55,()=>type(b,250,60)); },
+ s1(f){ const rx=$('rx');rx.classList.remove('lost');
+   const ps=[...rx.querySelectorAll('path')];
+   ps.forEach(p=>{const L=p.getTotalLength();p.style.transition='none';p.style.strokeDasharray=L;p.style.strokeDashoffset=f?0:L;});
+   if(f) return; rx.getBoundingClientRect();
+   let t=900; ps.forEach(p=>{T(()=>{p.style.transition='stroke-dashoffset .42s linear';p.style.strokeDashoffset=0;},t);t+=360;});
+   T(()=>rx.classList.add('lost'),t+1200); T(()=>rx.classList.remove('lost'),t+4200); },
+ s2(f){ const pt=$('pt'),rip=$('rip'),mic=$('mic'),rec=$('rec');
+   const L=[$('l1'),$('l2'),$('l3')],Cs=[$('c1'),$('c2'),$('c3')],sv=$('saved'),bs=[...bars.children];
+   let amp=0.06, target=0.06;
+   const loop=()=>{amp+=(target-amp)*.18; bs.forEach((b,i)=>{const n=target>.2?(0.25+Math.random()*.75):(.5+.5*Math.sin(performance.now()/300+i));b.style.height=Math.max(6,amp*n*100)+'%';}); raf.push(requestAnimationFrame(loop));};
+   const fin=()=>{pt.classList.add('tap');mic.classList.add('live');rec.textContent='SAVED';L.forEach(typeFull);L.forEach(l=>l.classList.add('done'));Cs.forEach(c=>c.classList.add('lit'));sv.classList.add('in');bs.forEach((b,i)=>b.style.height=(18+30*Math.abs(Math.sin(i*1.7)))+'%');};
+   pt.classList.remove('tap');mic.classList.remove('live');rec.textContent='TAP TO START';L.forEach(l=>{l.textContent='';l.classList.remove('done','caret');});Cs.forEach(c=>c.classList.remove('lit'));sv.classList.remove('in');
+   if(f){fin();return;}
+   raf.push(requestAnimationFrame(loop));
+   T(()=>{pt.classList.add('tap');rip.classList.remove('go');void rip.offsetWidth;rip.classList.add('go');},700);
+   T(()=>{mic.classList.add('live');rec.textContent='LISTENING';target=.08;},1300);
+   let t=1800;
+   L.forEach((l,i)=>{const n=[...l.dataset.full].length,sp=60;
+     T(()=>{target=.95;},t); type(l,t,sp,()=>{target=.1;l.classList.add('done');T(()=>Cs[i].classList.add('lit'),250);}); t+=n*sp+900;});
+   T(()=>{target=.04;rec.textContent='SAVED';sv.classList.add('in');},t+300); },
+ s3(f){ const tr=$('track'),ws=['w1','w2','w3','w4','w5'].map($);
+   tr.classList.toggle('in',!!f); ws.forEach(w=>w.classList.toggle('in',!!f)); if(f) return;
+   T(()=>tr.classList.add('in'),700); ws.forEach((w,i)=>T(()=>w.classList.add('in'),800+i*520)); },
+ s4(f){ const rows=[...$('tokRows').children];
+   rows.forEach((r,i)=>{ const tk=[...r.querySelectorAll('.tk')],ct=r.querySelector('.ct');
+     r.classList.toggle('in',!!f); tk.forEach(t=>t.classList.toggle('in',!!f)); ct.textContent=f?tk.length:0; if(f) return;
+     const t0=800+i*1100; T(()=>r.classList.add('in'),t0);
+     tk.forEach((t,j)=>T(()=>{t.classList.add('in');ct.textContent=j+1;},t0+120+j*(r.classList.contains('us')?110:38))); }); },
+ s4c(f){ const bs=[...$('costBars').children],q=$('mQ'),d=$('mD');
+   bs.forEach(b=>b.classList.toggle('in',!!f)); if(f){q.textContent='490';d.textContent='100';return;}
+   q.textContent='0';d.textContent='0';
+   bs.forEach((b,i)=>T(()=>b.classList.add('in'),700+i*260));
+   T(()=>{count(q,490,1600,String);count(d,100,1600,String);},2700); },
+ s5(f){ const is=[...document.querySelectorAll('#sig i')],x=$('nosig');
+   is.forEach(i=>i.classList.toggle('off',!!f)); x.classList.toggle('in',!!f); if(f) return;
+   [3,2,1,0].forEach((k,j)=>T(()=>is[k].classList.add('off'),1400+j*220)); T(()=>x.classList.add('in'),2300); },
+ s7(f){ const ts=[...tiles.children],nb=$('nBig'),nd=$('nDoc'),nh=$('nHos');
+   if(f){nb.textContent=nf(35000);nd.textContent='35';nh.textContent='2';ts.forEach(t=>t.classList.add('on'));return;}
+   ts.forEach(t=>t.classList.remove('on'));nb.textContent='0';nd.textContent='0';nh.textContent='0';
+   T(()=>count(nb,35000,2200,nf,p=>{const k=Math.round(p*350);for(let i=0;i<k;i++)ts[i].classList.add('on');}),900);
+   T(()=>{count(nd,35,1200,String);count(nh,2,700,String);},2900); },
+ s8(f){ demo.enter(f); },
+ s8p(f){ proof.enter(f); },
+ s9(f){ const cs=['f1','f2','f3','f4'].map($),tr=$('trend'),L=tr.getTotalLength();
+   cs.forEach(c=>c.classList.toggle('in',!!f)); tr.style.transition='none'; tr.style.strokeDasharray=f?'6 20':L; tr.style.strokeDashoffset=f?0:L;
+   if(f) return; cs.forEach((c,i)=>T(()=>c.classList.add('in'),700+i*550));
+   T(()=>{tr.style.transition='stroke-dashoffset 1.6s ease';tr.style.strokeDashoffset=0;},900);
+   T(()=>{tr.style.transition='none';tr.style.strokeDasharray='6 20';},2700); },
+};
+
+function go(n,dir){ n=Math.max(0,Math.min(slides.length-1,n)); if(n===cur) return; clearAll();
+  demo.leave(); proof.leave(); flowClose();
+  const prev=slides[cur]; if(prev){prev.classList.remove('on');prev.classList.toggle('back',dir>0);}
+  const sl=slides[n]; sl.classList.toggle('back',dir<0); void sl.offsetWidth; sl.classList.add('on'); sl.classList.remove('back');
+  cur=n; prog.style.width=((n+1)/slides.length*100)+'%';
+  const fin=REDUCED; steps(sl,fin); scenes[sl.id]&&scenes[sl.id](fin);
+  history.replaceState(null,'','#'+(n+1)); renderNotes(); }
+function replay(){const n=cur;cur=-1;go(n,0);}
+
+if(PRINT){ document.body.classList.add('print'); slides.forEach(sl=>{steps(sl,true);scenes[sl.id]&&scenes[sl.id](true);});
+  const ready=()=>document.body.dataset.ready=1; wf.complete?ready():(wf.addEventListener('load',()=>{wfOk();ready();}),wf.addEventListener('error',ready)); return; }
+
+const inner=()=>({s8:demo,s8p:proof})[slides[cur]&&slides[cur].id];
+addEventListener('keydown',e=>{const k=e.key;
+  if(['ArrowRight','PageDown',' ','Enter','ArrowDown'].includes(k)){e.preventDefault(); const s=inner(); if(!(s&&s.next()))go(cur+1,1);}
+  else if(['ArrowLeft','PageUp','Backspace','ArrowUp'].includes(k)){e.preventDefault(); const s=inner(); if(!(s&&s.prev()))go(cur-1,-1);}
+  else if(k==='Home')go(0,-1); else if(k==='End')go(slides.length-1,1);
+  else if(/^[1-9]$/.test(k))go(+k-1,(+k-1)>cur?1:-1);
+  else if(k==='0')go(9,9>cur?1:-1);
+  else if(k==='r'||k==='R')replay();
+  else if(k==='n'||k==='N'){notesEl.classList.toggle('on');renderNotes();}
+  else if(k==='t'||k==='T'){tStart=Date.now();renderNotes();}
+  else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+});
+$('viewport').addEventListener('click',e=>{ if(e.target.closest('.ui')) return; go(e.clientX>innerWidth/2?cur+1:cur-1,e.clientX>innerWidth/2?1:-1);});
+const start=parseInt(location.hash.slice(1))||1;
+document.fonts.ready.then(()=>go(start-1,1));
+})();
+</script>
+</body>
+</html>
