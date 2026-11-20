@@ -313,22 +313,29 @@ body.print #notes{display:none}
 #s6 .ft p{font:500 33px/1.25 var(--sans);color:var(--mut);margin-top:8px}
 
 /* ---------- S7 impact ---------- */
-#s7 h2{left:96px;top:190px;font-size:112px}
-#s7 .sub{left:100px;top:320px;font:500 42px var(--sans);color:var(--mut)}
-#s7 .big{left:96px;top:420px;width:1010px;height:600px;background:var(--dk);border-radius:40px;padding:44px 52px;color:#fff;overflow:hidden}
-#s7 .big .n{font:800 190px/1 var(--sans);letter-spacing:-.05em;color:var(--g);font-variant-numeric:tabular-nums}
-#s7 .big .l{font:600 44px var(--sans);margin-top:6px}
-#s7 .tiles{display:grid;grid-template-columns:repeat(50,1fr);gap:5px;margin-top:36px;width:900px}
+#s7 h2{left:96px;top:172px;font-size:112px}
+#s7 h2 .it{color:var(--g);font-size:124px}
+#s7 .sub{left:100px;top:308px;font:500 40px var(--sans);color:var(--mut)}
+#s7 .big{left:96px;top:396px;width:1010px;height:624px;background:var(--dk);border-radius:40px;padding:36px 52px;color:#fff;overflow:hidden}
+#s7 .big .n{font:800 170px/1 var(--sans);letter-spacing:-.05em;color:var(--g);font-variant-numeric:tabular-nums}
+#s7 .big .l{font:600 42px var(--sans);margin-top:4px}
+#s7 .tiles{display:grid;grid-template-columns:repeat(50,1fr);gap:5px;margin-top:28px;width:900px}
 #s7 .tiles i{display:block;aspect-ratio:1;border-radius:3px;background:#173A2B;transition:background .2s}
 #s7 .tiles i.on{background:var(--g)}
-#s7 .big .key{font:500 32px var(--sans);color:var(--dkmut);margin-top:24px}
-#s7 .col{left:1136px;top:420px;width:688px;display:flex;flex-direction:column;gap:24px}
-#s7 .st{border-radius:36px;padding:28px 40px}
-#s7 .st .n{font:800 96px/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-#s7 .st .l{font:600 36px/1.2 var(--sans);margin-top:6px}
-#s7 .s1{background:var(--gs);display:flex;gap:60px}
-#s7 .s1>div{flex:1}
+#s7 .tiles i.on.b{background:var(--amb)}
+#s7 .big .key{font:500 32px/1.3 var(--sans);color:#D5E6DD;margin-top:22px;display:flex;flex-direction:column;gap:4px}
+#s7 .big .key b{color:#fff}
+#s7 .big .key .mut{color:var(--dkmut);margin-top:4px}
+#s7 .big .key i{display:inline-block;width:24px;height:24px;border-radius:6px;margin-right:14px;vertical-align:-2px;background:var(--g)}
+#s7 .big .key i.h2{background:var(--amb)}
+#s7 .col{left:1136px;top:396px;width:688px;display:flex;flex-direction:column;gap:24px}
+#s7 .st{position:relative;border-radius:36px;padding:26px 40px}
+#s7 .st .n{font:800 92px/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#s7 .st .l{font:600 34px/1.2 var(--sans);margin-top:6px}
+#s7 .s1{background:var(--gs)}
 #s7 .s1 .l{color:var(--gd)}
+#s7 .s1 .x{font:500 32px/1.3 var(--sans);color:var(--ink);margin-top:14px;padding-top:14px;border-top:2px dashed rgba(14,99,76,.25)}
+#s7 .s2 .bon{position:absolute;right:28px;top:26px;background:var(--ink);color:var(--amb);font:800 32px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 20px;border-radius:999px;transform:rotate(4deg)}
 #s7 .s2{background:var(--amb)}
 #s7 .s2 .l{color:#3A2A08}
 #s7 .s2 .x{font:500 32px/1.3 var(--sans);color:#4A3307;margin-top:18px;padding-top:18px;border-top:2px dashed rgba(60,40,0,.25)}
@@ -675,26 +682,27 @@ body.print .caret::after{display:none}
 </section>
 
 <!-- ============ 7 IMPACT ============ -->
-<section class="slide" id="s7" data-sec="IMPACT &amp; USERS">
-  <h2 class="abs" data-t="100">Aankada aafai bolchhan.</h2>
-  <div class="abs sub" data-t="400" data-fx="fade">The numbers speak for themselves. Live and in daily use since March 2026.</div>
+<section class="slide" id="s7" data-sec="LIVE IN HOSPITALS">
+  <h2 class="abs" data-t="100">Aspatal ma live. <span class="it">Aaja nai.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade">Not a plan. In daily use in 2 hospitals since March 2026.</div>
   <div class="abs big" data-t="600" data-fx="zoom">
     <div class="n"><span id="nBig">0</span>+</div>
-    <div class="l">consults every month</div>
+    <div class="l">consults digitized every month</div>
     <div class="tiles" id="tiles"></div>
-    <div class="key">1 square = 100 real consults</div>
+    <div class="key"><span><i class="h1"></i><b>Hospital 1</b> · 15 doctors · 15,000 a month</span><span><i class="h2"></i><b>Hospital 2</b> · 20 doctors · 20,000 a month</span><span class="mut">1 square = 100 real consults</span></div>
   </div>
   <div class="abs col">
     <div class="st s1" data-t="2800" data-fx="right">
-      <div><div class="n" id="nDoc">0</div><div class="l">doctors using it every day</div></div>
-      <div><div class="n" id="nHos">0</div><div class="l">hospitals, plus health camps</div></div>
+      <div class="n" id="nPct">0%</div><div class="l">of recorded consults become a structured digital record</div>
+      <div class="x">No new system. No data-entry staff.</div>
     </div>
     <div class="st s2" data-t="3300" data-fx="right">
+      <div class="bon">Bonus</div>
       <div class="n">1.5–2 hrs</div><div class="l">back to every doctor, daily</div>
-      <div class="x">Together: <b>50+ doctor-hours a day</b> back with patients, not paperwork.</div>
+      <div class="x"><b>60%+ less paperwork</b> per doctor.</div>
     </div>
   </div>
-  <aside class="notes">[~15s] The numbers speak for themselves. Over 35,000 consults every month, 35 doctors, 2 hospitals plus health camps, live since March 2026. Each doctor gets one and a half to two hours back every day.</aside>
+  <aside class="notes">[~15s] And this is live, today. Two hospitals, 35 doctors: 15 at the first, 20 at the second. Over 35,000 consults a month, and every recorded consult becomes a proper digital record, with no new system and no data-entry staff. And as a bonus, each doctor gets one and a half to two hours back every day. Sixty percent less paperwork, more time looking at the patient.</aside>
 </section>
 
 <!-- ============ 8 DEMO ============ -->
@@ -1000,11 +1008,12 @@ const scenes={
  s5(f){ const is=[...document.querySelectorAll('#sig i')],x=$('nosig');
    is.forEach(i=>i.classList.toggle('off',!!f)); x.classList.toggle('in',!!f); if(f) return;
    [3,2,1,0].forEach((k,j)=>T(()=>is[k].classList.add('off'),1400+j*220)); T(()=>x.classList.add('in'),2300); },
- s7(f){ const ts=[...tiles.children],nb=$('nBig'),nd=$('nDoc'),nh=$('nHos');
-   if(f){nb.textContent=nf(35000);nd.textContent='35';nh.textContent='2';ts.forEach(t=>t.classList.add('on'));return;}
-   ts.forEach(t=>t.classList.remove('on'));nb.textContent='0';nd.textContent='0';nh.textContent='0';
+ s7(f){ const ts=[...tiles.children],nb=$('nBig'),np=$('nPct');
+   ts.forEach((t,i)=>t.classList.toggle('b',i>=150));
+   if(f){nb.textContent=nf(35000);np.textContent='100%';ts.forEach(t=>t.classList.add('on'));return;}
+   ts.forEach(t=>t.classList.remove('on'));nb.textContent='0';np.textContent='0%';
    T(()=>count(nb,35000,2200,nf,p=>{const k=Math.round(p*350);for(let i=0;i<k;i++)ts[i].classList.add('on');}),900);
-   T(()=>{count(nd,35,1200,String);count(nh,2,700,String);},2900); },
+   T(()=>count(np,100,1200,v=>v+'%'),2900); },
  s8(f){ demo.enter(f); },
  s8p(f){ proof.enter(f); },
  s9(f){ const cs=['f1','f2','f3','f4'].map($),tr=$('trend'),L=tr.getTotalLength();
