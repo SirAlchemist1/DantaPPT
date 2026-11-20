@@ -422,6 +422,23 @@ body.print #notes{display:none}
 /* ---------- S9 future ---------- */
 #s9 h2{left:96px;top:190px;font-size:112px}
 #s9 h2 .it{color:var(--g);font-size:124px}
+#steam h2{left:96px;top:172px;font-size:112px}
+#steam h2 .it{color:var(--g);font-size:124px}
+#steam .sub{left:100px;top:308px;font:500 38px var(--sans);color:var(--gd)}
+#steam .sub b{color:var(--ink);font-weight:700}
+#steam .uni{left:96px;top:396px;width:1100px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#steam .u{display:flex;align-items:center;gap:24px;height:196px;padding:0 30px;border-radius:32px;background:#fff;border:2px solid #E6DFD0}
+#steam .mo{flex:none;width:104px;height:104px;border-radius:26px;background:var(--dk);color:var(--amb);display:flex;align-items:center;justify-content:center;font:800 34px var(--sans);letter-spacing:-.01em}
+#steam .u b{display:block;font:800 38px/1.1 var(--sans);letter-spacing:-.015em;color:var(--ink)}
+#steam .u span{display:block;font:500 32px var(--sans);color:#5B6B62;margin-top:6px}
+#steam .yrs{left:1220px;top:396px;width:604px;height:412px;border-radius:36px;background:var(--dk);color:#fff;padding:30px 44px;display:flex;flex-direction:column;justify-content:center}
+#steam .yrs .n{font:800 220px/.9 var(--sans);letter-spacing:-.05em;color:var(--amb)}
+#steam .yrs b{font:800 48px/1.1 var(--sans);letter-spacing:-.02em;margin-top:10px}
+#steam .yrs .tg{display:flex;gap:14px;margin-top:22px}
+#steam .yrs .tg span{font:700 32px var(--sans);padding:8px 22px;border-radius:999px;background:rgba(0,168,89,.2);color:#9FE6C0}
+#steam .mis{left:96px;top:844px;width:1728px;padding:24px 40px;border-radius:32px;background:var(--g);color:#fff;font:700 44px/1.2 var(--sans);letter-spacing:-.01em}
+#steam .mis em{display:block;font:800 32px var(--sans);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--dk);margin-bottom:4px}
+#s9 .vsub{left:100px;top:470px;width:980px;font:600 38px/1.3 var(--sans);color:var(--gd)}
 #s9 .call{right:96px;top:200px;width:620px;padding:28px 36px;border-radius:32px;background:var(--ink);color:#fff}
 #s9 .call .n{font:800 72px/1 var(--sans);color:var(--amb);letter-spacing:-.03em}
 #s9 .call p{font:500 34px/1.3 var(--sans);margin-top:10px;color:#D5E6DD}
@@ -475,7 +492,7 @@ body.print .caret::after{display:none}
 <section class="slide" id="s0" data-sec="PRODUCT ICT AWARD 2026">
   <div class="abs pill made" data-t="200" data-fx="fade"><svg viewBox="0 0 30 38"><path d="M2 2 L27 18 H11 L27 36 H2 Z" fill="#D7263D" stroke="#1F3C88" stroke-width="2.6" stroke-linejoin="round"/><circle cx="9" cy="13" r="2.6" fill="#fff"/><circle cx="9" cy="28" r="3.2" fill="#fff"/></svg>Made in Nepal, for Nepal</div>
   <h1 class="abs"><span id="t0a" data-full="Doctor saab, bolnus."></span><br><span class="it" id="t0b" data-full="Danta lekhchha."></span></h1>
-  <div class="abs sub" data-t="2700"><b>Nepal's first AI medical scribe.</b> Doctors speak in Nepali or English. Danta writes the record.</div>
+  <div class="abs sub" data-t="2700"><b>Nepal's first AI medical scribe,</b> revolutionizing how Nepal and emerging nations digitize healthcare.</div>
   <div class="abs who" data-t="3200" data-fx="fade">
     <div><b>Suryodaya Bikram Shahi</b> · Founder &amp; Executive Chairman</div>
     <div><b>Sushant Raj Dangal</b> · Co-Founder &amp; CEO · Ancoda Labs Pvt. Ltd.</div>
@@ -488,7 +505,7 @@ body.print .caret::after{display:none}
     <div class="fc fc3"><div class="k">Medicine</div><div class="v">Paracetamol 500mg</div></div>
     <div class="fc fc4"><svg width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#00A859"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Record saved</div>
   </div>
-  <aside class="notes">[~15s] Namaskar. Doctor saab, bolnus. Danta lekhchha. Doctor, you speak, Danta writes. We're Ancoda Labs, and Danta-Med is Nepal's first AI medical scribe, built on Nepal's own AI.</aside>
+  <aside class="notes">[~15s] Namaskar. Doctor saab, bolnus. Danta lekhchha. Doctor, you speak, Danta writes. We're Ancoda Labs. Danta-Med is Nepal's first AI medical scribe, built on Nepal's own AI, and we're revolutionizing how healthcare in Nepal and emerging nations goes digital.</aside>
 </section>
 
 <!-- ============ 1 PROBLEM ============ -->
@@ -741,16 +758,36 @@ body.print .caret::after{display:none}
   <aside class="notes">[~15s] Quick proof we deliver. We're semi-finalists here and Nepal's nominee for the World Summit Awards. Live in 2 hospitals since March, 35,000 consults a month. Our tokenizer beats Google, Meta, Alibaba and OpenAI at Nepali, and we built our own speech-to-text and text-to-speech.</aside>
 </section>
 
+<!-- ============ TEAM ============ -->
+<section class="slide" id="steam" data-sec="THE TEAM">
+  <h2 class="abs" data-t="100">Sahi team. <span class="it">Sahi samay.</span></h2>
+  <div class="abs sub" data-t="400" data-fx="fade"><b>Research experience at world-class universities.</b> Years of shipping real products.</div>
+  <div class="abs uni">
+    <div class="u" data-t="600" data-fx="zoom"><div class="mo">H</div><div><b>Harvard University</b><span>USA</span></div></div>
+    <div class="u" data-t="750" data-fx="zoom"><div class="mo">UMD</div><div><b>University of Maryland</b><span>College Park, USA</span></div></div>
+    <div class="u" data-t="900" data-fx="zoom"><div class="mo">MQ</div><div><b>Macquarie University</b><span>Sydney, Australia</span></div></div>
+    <div class="u" data-t="1050" data-fx="zoom"><div class="mo">DCE</div><div><b>Delhi College of Engineering</b><span>New Delhi, India</span></div></div>
+  </div>
+  <div class="abs yrs" data-t="1300" data-fx="right">
+    <div class="n">9+</div>
+    <b>years shipping products</b>
+    <div class="tg"><span>Healthcare</span><span>Finance</span></div>
+  </div>
+  <div class="abs mis" data-t="1700" data-fx="fade"><em>Our mission</em>Revolutionize how healthcare in Nepal and emerging nations goes digital.</div>
+  <aside class="notes">[~15s] Who's behind this? Our team has research experience at Harvard, the University of Maryland College Park, Macquarie University and Delhi College of Engineering, and over 9 years of shipping products in healthcare and finance. Our mission: revolutionize how healthcare in Nepal and emerging nations goes digital.</aside>
+</section>
+
 <!-- ============ 9 FUTURE ============ -->
 <section class="slide" id="s9" data-sec="WHAT'S NEXT">
   <h2 class="abs" data-t="100">Aaja 2 aspatal.<br><span class="it">Bholi, Nepal bhari.</span></h2>
-  <div class="abs call" data-t="3200" data-fx="right"><div class="n">60 crore+</div><p>people next door also read Devanagari. Built for Nepal, ready for South Asia.</p></div>
+  <div class="abs vsub" data-t="400" data-fx="fade">Nepal first. Then every emerging nation.</div>
+  <div class="abs call" data-t="3200" data-fx="right"><div class="n">60 crore+</div><p>people next door also read Devanagari. South Asia is the first step.</p></div>
   <svg class="trend" viewBox="0 0 1920 1080"><path id="trend" d="M298 772 L722 692 L1146 612 L1560 532"/><path id="trendhd" d="M1539 518 L1572 530 L1546 553" style="stroke-dasharray:none"/></svg>
   <div class="col" id="f1" style="left:96px;height:268px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Aaja · Today</em><b>2 hospitals</b><span>35 doctors, 35,000+ consults a month</span></div></div>
   <div class="col" id="f2" style="left:520px;height:348px"><div class="bar" style="background:#CDEEDC"></div><div class="lbl" style="top:30px"><em>Bholi · Next</em><b>Hospitals</b><span>across all 7 provinces</span></div></div>
   <div class="col" id="f3" style="left:944px;height:428px"><div class="bar" style="background:#9FDDBD"></div><div class="lbl" style="top:30px"><em>Parsi · Then</em><b>Villages</b><span>every rural clinic and health camp</span></div></div>
-  <div class="col last" id="f4" style="left:1368px;height:508px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Ani… · Beyond</em><b>South Asia</b><span>more languages, one region</span></div></div>
-  <aside class="notes">[~15s] Aaja 2 aspatal, bholi Nepal bhari. Next, hospitals across all 7 provinces, then every rural clinic and health camp. And with 60 crore people next door reading Devanagari, South Asia is the natural next step.</aside>
+  <div class="col last" id="f4" style="left:1368px;height:508px"><div class="bar"></div><div class="lbl" style="top:30px"><em>Ani… · Beyond</em><b>Emerging nations</b><span>South Asia first, then beyond</span></div></div>
+  <aside class="notes">[~15s] Aaja 2 aspatal, bholi Nepal bhari. Next, hospitals across all 7 provinces, then every rural clinic and health camp. With 60 crore people next door reading Devanagari, South Asia is the first step, and then the emerging nations that face the same problem.</aside>
 </section>
 
 <!-- ============ 10 CLOSE ============ -->
@@ -759,12 +796,12 @@ body.print .caret::after{display:none}
   <div class="abs lgo" data-t="2200" data-fx="zoom"><svg class="logo"><use href="#danta-logo"/></svg></div>
   <h1 class="abs"><span id="t10a" data-full="Doctor saab, bolnus."></span><br><span class="it" id="t10b" data-full="Danta lekhchha."></span></h1>
   <div class="abs thx" data-t="2500" data-fx="zoom"><span class="deva">धन्यवाद</span> · Thank you</div>
-  <div class="abs made" data-t="2900">Made in Nepal. For every patient in Nepal.</div>
+  <div class="abs made" data-t="2900">Made in Nepal. Digitizing healthcare for emerging nations.</div>
   <div class="abs foot" data-t="3400" data-fx="fade">
     <div><b>danta-med.ancodalabs.com</b> · Ancoda Labs Pvt. Ltd.</div>
     <div class="mut">Nepal's nominee, World Summit Awards 2026</div>
   </div>
-  <aside class="notes">[~10s] Doctor saab, bolnus. Danta lekhchha. Made in Nepal, for every patient in Nepal. Dhanyabad.</aside>
+  <aside class="notes">[~10s] Doctor saab, bolnus. Danta lekhchha. Made in Nepal, and built to change how emerging nations digitize healthcare. Dhanyabad.</aside>
 </section>
 
 <div id="prog"></div>
